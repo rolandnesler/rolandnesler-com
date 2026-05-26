@@ -1,60 +1,684 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roland Nesler</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Roland Nesler | Testbasierte Gesundheit mit Zinzino</title>
+  <meta name="description" content="Roland Nesler begleitet Menschen dabei, Gesundheitsentscheidungen bewusster, messbarer und alltagstauglicher zu gestalten – mit testbasierter Gesundheit und Zinzino." />
+
   <style>
+    :root {
+      --bg: #f7f8f5;
+      --bg-soft: #eef3ed;
+      --text: #1f2a24;
+      --muted: #607064;
+      --green: #2f6b4f;
+      --green-dark: #234f3b;
+      --green-light: #dfeade;
+      --card: #ffffff;
+      --line: #dfe6dd;
+      --gold: #b69b5e;
+      --shadow: 0 18px 50px rgba(31, 42, 36, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f7f8f5;
-      color: #1f2a24;
-      padding: 60px;
-    }
-
-    .box {
-      max-width: 900px;
-      margin: 0 auto;
-      background: white;
-      padding: 50px;
-      border-radius: 24px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-    }
-
-    h1 {
-      color: #234f3b;
-      font-size: 44px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 20px;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    header {
+      padding: 22px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--green-dark);
+      letter-spacing: -0.02em;
+    }
+
+    nav a {
+      margin-left: 22px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    .hero {
+      padding: 84px 8% 72px;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 54px;
+      align-items: center;
+      background:
+        radial-gradient(circle at top left, rgba(47, 107, 79, 0.14), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-weight: 800;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 5.4vw, 68px);
+      line-height: 1.06;
+      margin: 0 0 24px;
+      color: var(--green-dark);
+      letter-spacing: -0.045em;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--muted);
+      margin: 0 0 32px;
+      max-width: 690px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
     }
 
     .button {
       display: inline-block;
-      margin-top: 25px;
-      padding: 14px 24px;
-      background: #2f6b4f;
-      color: white;
-      text-decoration: none;
+      padding: 14px 22px;
       border-radius: 999px;
-      font-weight: bold;
+      text-decoration: none;
+      font-weight: 800;
+      border: 2px solid var(--green);
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--green);
+      color: white;
+    }
+
+    .button.primary:hover {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    .button.secondary {
+      color: var(--green);
+      background: transparent;
+    }
+
+    .button.secondary:hover {
+      background: var(--green-light);
+      transform: translateY(-1px);
+    }
+
+    .hero-card {
+      background: white;
+      border-radius: 32px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .image-placeholder {
+      min-height: 440px;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(47, 107, 79, 0.25), rgba(182, 155, 94, 0.18)),
+        #dfe9df;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 32px;
+      color: var(--green-dark);
+      font-weight: 800;
+    }
+
+    .hero-caption {
+      padding: 18px 8px 4px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    section {
+      padding: 76px 8%;
+    }
+
+    .section-title {
+      max-width: 800px;
+      margin-bottom: 34px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(30px, 3.4vw, 44px);
+      line-height: 1.15;
+      margin: 0 0 14px;
+      color: var(--green-dark);
+      letter-spacing: -0.03em;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .cards.two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      padding: 28px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(31, 42, 36, 0.055);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      color: var(--green-dark);
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .number {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .band {
+      background: var(--bg-soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wide {
+      background: var(--green-dark);
+      color: white;
+      border-radius: 32px;
+      padding: 52px;
+      box-shadow: var(--shadow);
+    }
+
+    .wide h2 {
+      margin: 0 0 18px;
+      font-size: clamp(30px, 3.2vw, 42px);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+
+    .wide p {
+      color: #e6efe8;
+      font-size: 18px;
+      max-width: 920px;
+      margin: 0 0 16px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .portrait-placeholder {
+      min-height: 360px;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.06)),
+        #315f49;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 28px;
+      color: white;
+      font-weight: 800;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .highlight-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .highlight {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 14px 16px;
+      border-radius: 18px;
+      color: #eef6ef;
+    }
+
+    .notice {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--gold);
+      border-radius: 18px;
+      padding: 20px;
+      color: var(--muted);
+      margin-top: 24px;
+      max-width: 980px;
+    }
+
+    .contact-box {
+      background: white;
+      border-radius: 30px;
+      padding: 42px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .contact-box h2 {
+      margin: 0 0 12px;
+      color: var(--green-dark);
+      font-size: clamp(30px, 3.2vw, 42px);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .contact-box p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .note {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 980px;
+      margin-top: 22px;
+    }
+
+    footer {
+      padding: 36px 8%;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      background: white;
+    }
+
+    footer strong {
+      color: var(--green-dark);
+    }
+
+    @media (max-width: 980px) {
+      header {
+        display: block;
+      }
+
+      nav {
+        margin-top: 14px;
+      }
+
+      nav a {
+        margin: 0 14px 10px 0;
+        display: inline-block;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 52px;
+      }
+
+      .cards,
+      .cards.two,
+      .split,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .wide,
+      .contact-box {
+        padding: 32px;
+      }
+
+      .image-placeholder {
+        min-height: 340px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      header,
+      .hero,
+      section,
+      footer {
+        padding-left: 6%;
+        padding-right: 6%;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .button {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="box">
-    <h1>Roland Nesler</h1>
-    <p>
-      Testbasierte Gesundheit mit Zinzino: Messen statt raten.
-    </p>
-    <p>
-      Diese erste Testseite wurde erfolgreich über GitHub und Vercel veröffentlicht.
-    </p>
-    <a class="button" href="mailto:roland.nesler@gmail.com">Kontakt aufnehmen</a>
-  </div>
+  <header>
+    <div class="logo">Roland Nesler</div>
+    <nav>
+      <a href="#gesundheit">Testbasierte Gesundheit</a>
+      <a href="#tests">Tests</a>
+      <a href="#produkte">Produkte</a>
+      <a href="#partner">Partner werden</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow"><span></span> Professional Wellnesstrainer · Zinzino-Partner</div>
+
+        <h1>Testbasierte Gesundheit mit Zinzino: Messen statt raten.</h1>
+
+        <p>
+          Ich begleite Menschen dabei, ihre Gesundheitsentscheidungen bewusster,
+          messbarer und alltagstauglicher zu gestalten – mit modernen Home Health Tests,
+          gezielter Versorgung und regelmäßiger Verlaufskontrolle.
+        </p>
+
+        <div class="buttons">
+          <a class="button primary" href="#kontakt">Gespräch buchen</a>
+          <a class="button secondary" href="#tests">Tests ansehen</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="image-placeholder">
+          Hier kommt später dein Hero-Bild hinein:<br />
+          IMG_8629.jpeg
+        </div>
+        <div class="hero-caption">
+          Persönlich. Messbar. Alltagstauglich.
+        </div>
+      </div>
+    </section>
+
+    <section id="gesundheit">
+      <div class="section-title">
+        <h2>Messen – gezielt versorgen – Verlauf kontrollieren</h2>
+        <p>
+          Gesundheitliche Entscheidungen werden klarer, wenn sie nicht nur auf Vermutungen,
+          sondern auf nachvollziehbarer Orientierung beruhen.
+        </p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="number">1</div>
+          <h3>Messen</h3>
+          <p>
+            Home Health Tests können Orientierung geben und helfen, persönliche Ausgangswerte
+            besser zu verstehen.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="number">2</div>
+          <h3>Gezielt versorgen</h3>
+          <p>
+            Auf Basis von Messergebnissen lassen sich Ernährung, Routinen und Versorgung
+            bewusster betrachten.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="number">3</div>
+          <h3>Verlauf kontrollieren</h3>
+          <p>
+            Regelmäßige Kontrolle macht Veränderungen sichtbar und unterstützt langfristige
+            Gesundheitsentscheidungen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tests" class="band">
+      <div class="section-title">
+        <h2>Zinzino Home Health Tests</h2>
+        <p>
+          Der Fokus liegt zunächst auf ausgewählten Tests, die Menschen dabei unterstützen können,
+          persönliche Gesundheitsdaten besser einzuordnen.
+        </p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>BalanceTest</h3>
+          <p>
+            Ein Selbsttest für zu Hause zur Analyse ausgewählter Fettsäurewerte.
+            Er kann als Ausgangspunkt dienen, um Versorgung und Verlauf bewusster zu betrachten.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Gut Health Test</h3>
+          <p>
+            Ein Testkonzept zur Betrachtung ausgewählter Marker im Zusammenhang mit
+            Darmgesundheit und Stoffwechsel.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Weitere Tests</h3>
+          <p>
+            Je nach Markt und Verfügbarkeit können weitere Tests wie Vitamin D oder HbA1c
+            relevant sein. Aktuelle Details findest du direkt im offiziellen Zinzino-Shop.
+          </p>
+        </div>
+      </div>
+
+      <div class="notice">
+        Die Inhalte dieser Website dienen der Information und ersetzen keine ärztliche Diagnose,
+        Beratung oder Behandlung.
+      </div>
+    </section>
+
+    <section id="produkte">
+      <div class="section-title">
+        <h2>Produkte bewusst auswählen</h2>
+        <p>
+          Produkte sollten nicht beliebig ausgewählt werden. Mein Ansatz ist:
+          zuerst Orientierung schaffen, dann gezielt entscheiden und den Verlauf im Blick behalten.
+        </p>
+      </div>
+
+      <div class="cards two">
+        <div class="card">
+          <h3>Für Kunden</h3>
+          <p>
+            Du möchtest wissen, welche Tests und Produkte für dich grundsätzlich interessant sein könnten?
+            Dann starten wir mit einem persönlichen Gespräch und klären deine Ziele und Fragen.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Aktuelle Informationen</h3>
+          <p>
+            Preise, Verfügbarkeit, Aktionen und Bestellinformationen können sich je nach Markt ändern.
+            Deshalb findest du aktuelle Details direkt im offiziellen Zinzino-Shop.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ueber">
+      <div class="wide">
+        <div class="split">
+          <div class="portrait-placeholder">
+            Hier kommt später dein Portrait hinein:<br />
+            Roland_Nesler_Januar-2022(1).jpg
+          </div>
+
+          <div>
+            <h2>Über Roland</h2>
+
+            <p>
+              Ich bin Professional Wellnesstrainer, Ernährungs- und Gesundheits-Coach
+              und Zinzino-Partner. Gesundheit bedeutet für mich nicht kurzfristige Trends,
+              sondern bewusste Entscheidungen, alltagstaugliche Umsetzung und messbare Entwicklung.
+            </p>
+
+            <p>
+              Sport, gesunde Ernährung, Krafttraining, Mountainbike fahren, Bergwandern,
+              Segeln, Skilaufen und Kochen gehören zu meinem Leben – und prägen auch meinen
+              persönlichen Zugang zu Gesundheit.
+            </p>
+
+            <div class="highlight-list">
+              <div class="highlight">Persönliche Begleitung statt anonymer Produktverkauf</div>
+              <div class="highlight">Fokus auf Messbarkeit, Alltag und langfristige Umsetzung</div>
+              <div class="highlight">Seriöse Kommunikation ohne Heil- oder Erfolgsversprechen</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="partner" class="band">
+      <div class="section-title">
+        <h2>Partner werden</h2>
+        <p>
+          Für Menschen, die sich für Gesundheit, Messbarkeit und ein internationales Partnerbusiness
+          interessieren, kann Zinzino eine spannende Möglichkeit sein.
+        </p>
+      </div>
+
+      <div class="cards two">
+        <div class="card">
+          <h3>Für wen kann das interessant sein?</h3>
+          <p>
+            Für Menschen, die gerne mit anderen Menschen arbeiten, sich für Gesundheit interessieren
+            und ein Partnerbusiness seriös, langfristig und persönlich aufbauen möchten.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Ohne Einkommensversprechen</h3>
+          <p>
+            Zinzino bietet ein Partnerprogramm mit Vergütungsmöglichkeiten gemäß offiziellem
+            Compensation Plan. Ob und in welcher Höhe Einnahmen entstehen, hängt von persönlicher
+            Aktivität, Kundenaufbau, Teamaufbau, Marktumfeld, Qualifikation und Umsetzung ab.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="contact-box">
+        <div>
+          <h2>Lass uns sprechen</h2>
+          <p>
+            Du möchtest wissen, ob die Tests, Produkte oder die Partnerchance zu dir passen?
+            Dann vereinbaren wir am besten ein persönliches Gespräch.
+          </p>
+        </div>
+
+        <div class="buttons">
+          <a class="button primary" href="mailto:roland.nesler@gmail.com">E-Mail schreiben</a>
+          <a class="button secondary" href="#">Offiziellen Zinzino-Shop öffnen</a>
+        </div>
+      </div>
+
+      <p class="note">
+        Hinweis: Aktuelle Preise, Verfügbarkeit und Bestellinformationen findest du direkt im offiziellen
+        Zinzino-Shop. Der finale Partnerlink wird noch eingefügt. Impressum und Datenschutz werden ergänzt.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Roland Nesler</strong> · Testbasierte Gesundheit mit Zinzino ·
+    © 2026 · Impressum und Datenschutz werden ergänzt.
+  </footer>
 </body>
 </html>
