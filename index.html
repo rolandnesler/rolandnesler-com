@@ -384,14 +384,18 @@
         display: block;
       }
 
-      nav {
-        margin-top: 14px;
-      }
+ nav {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+}
 
-      nav a {
-        margin: 0 14px 10px 0;
-        display: inline-block;
-      }
+nav a {
+  margin: 0;
+  display: inline-block;
+}
 
       .hero {
         grid-template-columns: 1fr;
