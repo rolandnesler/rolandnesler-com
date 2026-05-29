@@ -28,7 +28,6 @@
       --shadow-medium: 0 20px 54px rgba(33, 63, 29, 0.12);
 
       --image-fade: clamp(10px, 0.8vw, 15px);
-      --hero-image-scale: clamp(1.08, 1.8vw, 1.15);
     }
 
     * {
@@ -346,14 +345,14 @@
       max-width: 1500px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(350px, 0.60fr) minmax(620px, 1.40fr);
+      grid-template-columns: minmax(350px, 0.58fr) minmax(640px, 1.42fr);
       position: relative;
     }
 
     .hero-copy {
       position: relative;
       z-index: 8;
-      padding: clamp(30px, 3vw, 48px) 1.4vw 38px 5vw;
+      padding: clamp(30px, 3vw, 48px) 1.2vw 38px 5vw;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -364,8 +363,8 @@
       content: "";
       position: absolute;
       top: 0;
-      right: -205px;
-      width: 300px;
+      right: -145px;
+      width: 230px;
       height: 100%;
       z-index: -1;
       pointer-events: none;
@@ -373,8 +372,8 @@
         linear-gradient(
           90deg,
           #fffdf7 0%,
-          rgba(255, 253, 247, 0.94) 18%,
-          rgba(255, 253, 247, 0.48) 55%,
+          rgba(255, 253, 247, 0.92) 24%,
+          rgba(255, 253, 247, 0.38) 62%,
           rgba(255, 253, 247, 0) 100%
         );
     }
@@ -494,7 +493,7 @@
       align-items: flex-start;
       justify-content: flex-end;
       padding: clamp(4px, 0.8vw, 10px) 5% clamp(18px, 2vw, 28px) 0;
-      margin-left: clamp(-210px, -13vw, -130px);
+      margin-left: clamp(-185px, -11vw, -105px);
       background:
         radial-gradient(circle at 58% 42%, rgba(196, 154, 68, 0.08), transparent 34%),
         linear-gradient(135deg, #fffdf7 0%, #f6eddc 100%);
@@ -505,16 +504,15 @@
       position: absolute;
       left: -1px;
       top: 0;
-      width: clamp(70px, 6vw, 110px);
+      width: clamp(48px, 4vw, 72px);
       height: 100%;
-      z-index: 2;
+      z-index: 3;
       pointer-events: none;
       background:
         linear-gradient(
           90deg,
           #fffdf7 0%,
-          rgba(255, 253, 247, 0.72) 28%,
-          rgba(255, 253, 247, 0.16) 72%,
+          rgba(255, 253, 247, 0.62) 34%,
           rgba(255, 253, 247, 0) 100%
         );
     }
@@ -523,24 +521,24 @@
       content: "";
       position: absolute;
       inset: 0;
-      z-index: 3;
+      z-index: 2;
       pointer-events: none;
       background:
-        radial-gradient(circle at 35% 14%, rgba(255,255,255,0.12), transparent 18%),
-        linear-gradient(180deg, rgba(255,253,247,0.015), rgba(250,246,237,0.06));
+        radial-gradient(circle at 35% 14%, rgba(255,255,255,0.10), transparent 18%),
+        linear-gradient(180deg, rgba(255,253,247,0.01), rgba(250,246,237,0.05));
     }
 
     .hero-frame {
       position: relative;
       z-index: 1;
-      width: min(100%, clamp(900px, 78vw, 1180px));
-      max-width: 1180px;
+      width: min(100%, clamp(940px, 73vw, 1120px));
+      max-width: 1120px;
       padding: 0;
       border: none;
       border-radius: 0;
       background: transparent;
       box-shadow: none;
-      overflow: visible;
+      overflow: hidden;
     }
 
     .hero-frame::before,
@@ -557,10 +555,10 @@
         linear-gradient(
           90deg,
           var(--cream-2) 0,
-          rgba(244, 234, 215, 0.72) calc(var(--image-fade) * 0.28),
-          rgba(244, 234, 215, 0) var(--image-fade),
-          rgba(244, 234, 215, 0) calc(100% - var(--image-fade)),
-          rgba(244, 234, 215, 0.72) calc(100% - (var(--image-fade) * 0.28)),
+          rgba(244, 234, 215, 0.58) 8px,
+          rgba(244, 234, 215, 0) 18px,
+          rgba(244, 234, 215, 0) calc(100% - 18px),
+          rgba(244, 234, 215, 0.58) calc(100% - 8px),
           var(--cream-2) 100%
         );
     }
@@ -570,10 +568,10 @@
         linear-gradient(
           180deg,
           var(--cream-2) 0,
-          rgba(244, 234, 215, 0.72) calc(var(--image-fade) * 0.28),
-          rgba(244, 234, 215, 0) var(--image-fade),
-          rgba(244, 234, 215, 0) calc(100% - var(--image-fade)),
-          rgba(244, 234, 215, 0.72) calc(100% - (var(--image-fade) * 0.28)),
+          rgba(244, 234, 215, 0.58) 8px,
+          rgba(244, 234, 215, 0) 18px,
+          rgba(244, 234, 215, 0) calc(100% - 18px),
+          rgba(244, 234, 215, 0.58) calc(100% - 8px),
           var(--cream-2) 100%
         );
     }
@@ -581,7 +579,7 @@
     .hero-frame img {
       width: 100%;
       height: auto;
-      max-height: clamp(500px, 50vw, 640px);
+      max-height: none;
       min-height: 0;
       object-fit: contain;
       object-position: center right;
@@ -589,8 +587,7 @@
       background: transparent;
       box-shadow: none;
       filter: saturate(1.06) contrast(1.02) brightness(1.02);
-      transform: scale(var(--hero-image-scale));
-      transform-origin: center right;
+      transform: none;
     }
 
     .quick-cards {
