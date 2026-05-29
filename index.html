@@ -322,11 +322,11 @@
       content: "";
       position: absolute;
       left: 5%;
-      top: 18px;
+      top: 10px;
       width: 128px;
       height: 1px;
       background: var(--gold);
-      opacity: 0.42;
+      opacity: 0.36;
       z-index: 4;
     }
 
@@ -334,8 +334,8 @@
       content: "❧";
       position: absolute;
       left: calc(5% + 140px);
-      top: 5px;
-      color: rgba(196, 154, 68, 0.50);
+      top: -3px;
+      color: rgba(196, 154, 68, 0.46);
       font-size: 26px;
       z-index: 4;
     }
@@ -345,10 +345,10 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: minmax(330px, 0.46fr) minmax(620px, 0.94fr);
-      align-items: center;
+      align-items: start;
       column-gap: clamp(14px, 2vw, 30px);
-      min-height: clamp(500px, 45vw, 590px);
-      padding: 26px 5% 34px;
+      min-height: auto;
+      padding: 14px 5% 30px;
       position: relative;
     }
 
@@ -358,7 +358,8 @@
       max-width: 470px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
+      padding-top: clamp(20px, 2.2vw, 32px);
     }
 
     .hero h1 {
@@ -471,8 +472,9 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      align-self: center;
+      align-self: start;
       overflow: visible;
+      padding-top: clamp(20px, 2.2vw, 32px);
     }
 
     .hero-frame {
@@ -1011,17 +1013,19 @@
 
       .hero-shell {
         grid-template-columns: 1fr;
-        padding: 32px 6% 34px;
+        padding: 22px 6% 30px;
         min-height: auto;
-        row-gap: 18px;
+        row-gap: 14px;
       }
 
       .hero-copy {
         max-width: none;
+        padding-top: 0;
       }
 
       .hero-art {
         overflow: hidden;
+        padding-top: 0;
       }
 
       .hero-frame {
@@ -1093,9 +1097,14 @@
       }
 
       .hero-shell {
-        padding-top: 22px;
-        padding-bottom: 28px;
-        row-gap: 16px;
+        padding-top: 12px;
+        padding-bottom: 24px;
+        row-gap: 12px;
+      }
+
+      .hero-copy,
+      .hero-art {
+        padding-top: 0;
       }
 
       .hero h1 {
