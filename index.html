@@ -4,852 +4,1069 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Roland Nesler | Testbasierte Gesundheit mit Zinzino</title>
-  <meta name="description" content="Roland Nesler begleitet Menschen dabei, Gesundheitsentscheidungen bewusster, messbarer und alltagstauglicher zu gestalten – mit testbasierter Gesundheit und Zinzino." />
-
- <style>
-  :root {
-    --bg: #faf7ef;
-    --bg-soft: #f3ead8;
-    --bg-cream: #fffaf1;
-
-    --text: #1f2a24;
-    --muted: #647263;
-
-    --green: #365f2b;
-    --green-dark: #243f22;
-    --green-soft: #e8f0df;
-    --green-pale: #f1f6ec;
-
-    --gold: #b69b5e;
-    --gold-soft: #ead8aa;
-
-    --card: #ffffff;
-    --line: rgba(54, 95, 43, 0.16);
-
-    --radius-sm: 16px;
-    --radius-md: 24px;
-    --radius-lg: 34px;
-
-    --shadow-soft: 0 16px 40px rgba(36, 63, 34, 0.10);
-    --shadow-card: 0 10px 28px rgba(36, 63, 34, 0.08);
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background:
-      radial-gradient(circle at top left, rgba(182, 155, 94, 0.16), transparent 34%),
-      linear-gradient(180deg, #fffaf1 0%, #faf7ef 42%, #f7f2e6 100%);
-    color: var(--text);
-    line-height: 1.6;
-  }
-
-  img {
-    max-width: 100%;
-    display: block;
-  }
-
-  a {
-    color: inherit;
-  }
-
-  header {
-    padding: 18px 6%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 28px;
-    background: rgba(255, 250, 241, 0.92);
-    border-bottom: 1px solid var(--line);
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    backdrop-filter: blur(14px);
-  }
-
-  .logo {
-    font-weight: 900;
-    font-size: 20px;
-    color: var(--green-dark);
-    letter-spacing: -0.03em;
-    white-space: nowrap;
-  }
-
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px 16px;
-  }
-
-  nav a {
-    margin: 0;
-    text-decoration: none;
-    color: var(--text);
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.2;
-    padding: 8px 0;
-    position: relative;
-  }
-
-  nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 2px;
-    width: 0;
-    height: 2px;
-    background: var(--gold);
-    transition: width 0.2s ease;
-  }
-
-  nav a:hover {
-    color: var(--green);
-  }
-
-  nav a:hover::after {
-    width: 100%;
-  }
-
-  .burger {
-    display: none;
-    background: transparent;
-    border: none;
-    font-size: 30px;
-    color: var(--green-dark);
-    cursor: pointer;
-    padding: 8px;
-    line-height: 1;
-  }
-
-  .hero {
-    padding: 92px 8% 78px;
-    display: grid;
-    grid-template-columns: 1.02fr 0.98fr;
-    gap: 58px;
-    align-items: center;
-    background:
-      radial-gradient(circle at 8% 18%, rgba(54, 95, 43, 0.14), transparent 30%),
-      radial-gradient(circle at 88% 8%, rgba(182, 155, 94, 0.18), transparent 28%),
-      linear-gradient(180deg, #fffdf7 0%, var(--bg) 100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: "✦";
-    position: absolute;
-    top: 52px;
-    right: 7%;
-    color: rgba(182, 155, 94, 0.32);
-    font-size: 42px;
-    line-height: 1;
-  }
-
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    padding: 9px 15px;
-    border-radius: 999px;
-    background: var(--green-soft);
-    color: var(--green-dark);
-    font-weight: 900;
-    font-size: 14px;
-    margin-bottom: 22px;
-    border: 1px solid rgba(54, 95, 43, 0.10);
-  }
-
-  .eyebrow span {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
-    display: inline-block;
-    box-shadow: 0 0 0 5px rgba(182, 155, 94, 0.15);
-  }
-
-  .hero h1 {
-    font-size: clamp(40px, 5.4vw, 70px);
-    line-height: 1.04;
-    margin: 0 0 24px;
-    color: var(--green-dark);
-    letter-spacing: -0.05em;
-    max-width: 780px;
-  }
-
-  .hero p {
-    font-size: 20px;
-    color: var(--muted);
-    margin: 0 0 30px;
-    max-width: 700px;
-  }
-
-  .buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    align-items: center;
-  }
-
-  .button {
-    display: inline-block;
-    padding: 14px 22px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 900;
-    border: 2px solid var(--green);
-    transition: 0.2s ease;
-  }
-
-  .button.primary {
-    background: var(--green);
-    color: white;
-    box-shadow: 0 12px 26px rgba(54, 95, 43, 0.20);
-  }
-
-  .button.primary:hover {
-    background: var(--green-dark);
-    border-color: var(--green-dark);
-    transform: translateY(-1px);
-  }
-
-  .button.secondary {
-    color: var(--green-dark);
-    background: rgba(255, 250, 241, 0.75);
-    border-color: rgba(54, 95, 43, 0.28);
-  }
-
-  .button.secondary:hover {
-    background: var(--green-soft);
-    transform: translateY(-1px);
-  }
-
-  .roland-intro-card {
-    margin-top: 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    max-width: 540px;
-    padding: 16px 18px;
-    background: rgba(255, 250, 241, 0.92);
-    border: 1px solid rgba(182, 155, 94, 0.38);
-    border-radius: 26px;
-    box-shadow: var(--shadow-card);
-    position: relative;
-  }
-
-  .roland-intro-card::before {
-    content: "";
-    position: absolute;
-    left: 18px;
-    top: -1px;
-    width: 78px;
-    height: 3px;
-    background: var(--gold);
-    border-radius: 999px;
-  }
-
-  .roland-intro-card img {
-    width: 78px;
-    height: 78px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
-    border: 3px solid var(--gold-soft);
-    flex-shrink: 0;
-    background: var(--green-soft);
-  }
-
-  .roland-intro-card strong {
-    display: block;
-    color: var(--green-dark);
-    font-size: 18px;
-    line-height: 1.2;
-  }
-
-  .roland-intro-card span {
-    display: block;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.35;
-    margin-top: 4px;
-  }
-
-  .roland-intro-card em {
-    display: block;
-    color: var(--gold);
-    font-style: normal;
-    font-weight: 900;
-    font-size: 14px;
-    margin-top: 6px;
-  }
-
-  .hero-card {
-    background:
-      linear-gradient(145deg, rgba(255, 250, 241, 0.95), rgba(255, 255, 255, 0.88));
-    border-radius: 34px;
-    padding: 16px;
-    box-shadow: var(--shadow-soft);
-    border: 1px solid rgba(182, 155, 94, 0.26);
-    position: relative;
-  }
-
-  .hero-card::before {
-    content: "";
-    position: absolute;
-    inset: 10px;
-    border: 1px solid rgba(182, 155, 94, 0.20);
-    border-radius: 28px;
-    pointer-events: none;
-  }
-
-  .hero-image {
-    width: 100%;
-    height: auto;
-    border-radius: 26px;
-    overflow: hidden;
-    box-shadow: 0 18px 50px rgba(36, 63, 34, 0.13);
-  }
-
-  .hero-image img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-  }
-
-  .hero-caption {
-    padding: 14px 6px 2px;
-    color: var(--green-dark);
-    font-weight: 900;
-    text-align: center;
-    letter-spacing: -0.01em;
-  }
-
-  section {
-    padding: 76px 8%;
-  }
-
-  .section-title {
-    max-width: 830px;
-    margin-bottom: 36px;
-    position: relative;
-  }
-
-  .section-title::before {
-    content: "";
-    display: block;
-    width: 74px;
-    height: 3px;
-    background: var(--gold);
-    border-radius: 999px;
-    margin-bottom: 18px;
-  }
-
-  .section-title h2 {
-    font-size: clamp(30px, 3.4vw, 46px);
-    line-height: 1.13;
-    margin: 0 0 14px;
-    color: var(--green-dark);
-    letter-spacing: -0.04em;
-  }
-
-  .section-title p {
-    color: var(--muted);
-    font-size: 18px;
-    margin: 0;
-  }
-
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-  }
-
-  .cards.two {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .card {
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 250, 241, 0.92));
-    padding: 28px;
-    border-radius: 26px;
-    border: 1px solid rgba(54, 95, 43, 0.13);
-    box-shadow: var(--shadow-card);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .card::after {
-    content: "";
-    position: absolute;
-    right: -28px;
-    bottom: -28px;
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    background: rgba(182, 155, 94, 0.08);
-  }
-
-  .card h3 {
-    margin: 0 0 12px;
-    color: var(--green-dark);
-    font-size: 22px;
-    line-height: 1.25;
-  }
-
-  .card p {
-    color: var(--muted);
-    margin: 0;
-  }
-
-  .number {
-    width: 44px;
-    height: 44px;
-    border-radius: 16px;
-    background: var(--green-soft);
-    color: var(--green-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    margin-bottom: 18px;
-    border: 1px solid rgba(54, 95, 43, 0.10);
-  }
-
-  .band {
-    background:
-      radial-gradient(circle at 12% 18%, rgba(54, 95, 43, 0.08), transparent 30%),
-      var(--bg-soft);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-
-  .wide {
-    background:
-      radial-gradient(circle at top right, rgba(182, 155, 94, 0.22), transparent 34%),
-      linear-gradient(135deg, var(--green-dark), #315a2b);
-    color: white;
-    border-radius: 34px;
-    padding: 52px;
-    box-shadow: var(--shadow-soft);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-  }
-
-  .wide h2 {
-    margin: 0 0 18px;
-    font-size: clamp(30px, 3.2vw, 42px);
-    letter-spacing: -0.04em;
-    line-height: 1.15;
-  }
-
-  .wide p {
-    color: #edf5e8;
-    font-size: 18px;
-    max-width: 920px;
-    margin: 0 0 16px;
-  }
-
-  .split {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 34px;
-    align-items: center;
-  }
-
-  .about-image {
-    width: 100%;
-    height: auto;
-    border-radius: 28px;
-    box-shadow: 0 18px 50px rgba(16, 30, 18, 0.24);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-  }
-
-  .highlight-list {
-    display: grid;
-    gap: 14px;
-    margin-top: 24px;
-  }
-
-  .highlight {
-    background: rgba(255, 255, 255, 0.11);
-    border: 1px solid rgba(255, 255, 255, 0.17);
-    padding: 14px 16px;
-    border-radius: 18px;
-    color: #eef6ef;
-  }
-
-  .notice {
-    background: rgba(255, 250, 241, 0.95);
-    border: 1px solid rgba(182, 155, 94, 0.28);
-    border-left: 5px solid var(--gold);
-    border-radius: 20px;
-    padding: 20px;
-    color: var(--muted);
-    margin-top: 24px;
-    max-width: 980px;
-    box-shadow: 0 8px 20px rgba(36, 63, 34, 0.06);
-  }
-
-  .contact-box {
-    background:
-      linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 250, 241, 0.94));
-    border-radius: 32px;
-    padding: 42px;
-    border: 1px solid rgba(54, 95, 43, 0.14);
-    box-shadow: var(--shadow-soft);
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 28px;
-    align-items: center;
-  }
-
-  .contact-box h2 {
-    margin: 0 0 12px;
-    color: var(--green-dark);
-    font-size: clamp(30px, 3.2vw, 42px);
-    line-height: 1.15;
-    letter-spacing: -0.04em;
-  }
-
-  .contact-box p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 18px;
-  }
-
-  .note {
-    font-size: 14px;
-    color: var(--muted);
-    max-width: 980px;
-    margin-top: 22px;
-  }
-
-  footer {
-    padding: 36px 8%;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 14px;
-    background: rgba(255, 250, 241, 0.95);
-  }
-
-  footer strong {
-    color: var(--green-dark);
-  }
-
-  @media (max-width: 1100px) {
-    header {
+  <title>Roland Nesler | Messbare Gesundheit</title>
+  <meta name="description" content="Roland Nesler begleitet Menschen dabei, ihren Körper besser zu verstehen – mit testbasierter Gesundheit, gezielter Versorgung und persönlicher Begleitung." />
+
+  <style>
+    :root {
+      --cream: #faf6ed;
+      --cream-soft: #f3ead8;
+      --cream-card: #fffdf7;
+
+      --green-deep: #24451f;
+      --green: #365f2b;
+      --green-soft: #edf3e6;
+
+      --gold: #c49a44;
+      --gold-soft: #e8d7aa;
+
+      --text: #1f2a24;
+      --muted: #5f6b5c;
+      --line: rgba(54, 95, 43, 0.16);
+
+      --shadow: 0 18px 44px rgba(36, 69, 31, 0.10);
+      --shadow-soft: 0 10px 28px rgba(36, 69, 31, 0.08);
+
+      --radius: 24px;
+      --radius-lg: 34px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    img {
+      max-width: 100%;
       display: block;
     }
 
-    nav {
-      margin-top: 14px;
-      justify-content: flex-start;
+    a {
+      color: inherit;
+    }
+
+    .serif {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: -0.035em;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 253, 247, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 8px 24px rgba(36, 69, 31, 0.06);
+    }
+
+    .header-inner {
+      padding: 18px 5%;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      white-space: nowrap;
+      color: var(--green-deep);
+    }
+
+    .brand-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .brand-divider {
+      color: var(--gold);
+      font-size: 22px;
+    }
+
+    .brand-subtitle {
+      font-size: 16px;
+      color: var(--green-deep);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--green);
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 14px;
+      box-shadow: 0 10px 24px rgba(54, 95, 43, 0.22);
+      white-space: nowrap;
+    }
+
+    .header-cta:hover {
+      background: var(--green-deep);
     }
 
     .hero {
-      grid-template-columns: 1fr;
-      padding-top: 58px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 45% 5%, rgba(196, 154, 68, 0.20), transparent 24%),
+        linear-gradient(180deg, #fffdf7 0%, var(--cream) 100%);
     }
 
-    .cards,
-    .cards.two,
-    .split,
-    .contact-box {
-      grid-template-columns: 1fr;
+    .hero-wrap {
+      min-height: 560px;
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      align-items: stretch;
     }
 
-    .wide,
-    .contact-box {
-      padding: 32px;
-    }
-  }
-
-  @media (max-width: 640px) {
-    header,
-    .hero,
-    section,
-    footer {
-      padding-left: 6%;
-      padding-right: 6%;
-    }
-
-    nav {
+    .hero-copy {
+      padding: 58px 4.5% 34px 6%;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
-      gap: 8px 13px;
+      max-width: 560px;
     }
 
-    nav a {
-      font-size: 14px;
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -170px;
+      width: 260px;
+      height: 100%;
+      background: linear-gradient(90deg, var(--cream) 0%, rgba(250, 246, 237, 0.92) 42%, rgba(250, 246, 237, 0) 100%);
+      z-index: -1;
+      pointer-events: none;
     }
 
     .hero h1 {
-      font-size: 38px;
+      margin: 0;
+      color: var(--green-deep);
+      font-size: clamp(46px, 5.1vw, 74px);
+      line-height: 1.02;
     }
 
-    .hero p {
-      font-size: 18px;
+    .gold-line {
+      width: 78px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 999px;
+      margin: 22px 0 18px;
+    }
+
+    .hero-text {
+      margin: 0;
+      color: var(--text);
+      font-size: 17px;
+      max-width: 380px;
+    }
+
+    .claim-box {
+      margin: 30px 0 28px;
+      padding: 16px 0;
+      max-width: 390px;
+      text-align: center;
+      color: var(--green-deep);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      line-height: 1.22;
+      border-top: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      position: relative;
+    }
+
+    .claim-box::before {
+      content: "⌁";
+      position: absolute;
+      left: 50%;
+      top: -19px;
+      transform: translateX(-50%);
+      background: var(--cream);
+      color: var(--gold);
+      padding: 0 16px;
+      font-size: 28px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 18px;
     }
 
     .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 14px;
+      min-width: 178px;
+      transition: 0.2s ease;
+    }
+
+    .button-primary {
+      background: var(--green);
+      color: #fff;
+      box-shadow: 0 12px 26px rgba(54, 95, 43, 0.20);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-1px);
+      background: var(--green-deep);
+    }
+
+    .button-secondary {
+      background: rgba(255, 253, 247, 0.85);
+      color: var(--green-deep);
+      border: 1px solid rgba(54, 95, 43, 0.30);
+    }
+
+    .button-secondary:hover {
+      transform: translateY(-1px);
+      background: var(--green-soft);
+    }
+
+    .roland-mini {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 360px;
+      padding: 12px 14px;
+      border-radius: 20px;
+      background: rgba(255, 253, 247, 0.88);
+      border: 1px solid rgba(196, 154, 68, 0.35);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .roland-mini img {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold-soft);
+      flex-shrink: 0;
+    }
+
+    .roland-mini strong {
+      display: block;
+      color: var(--green-deep);
+      line-height: 1.15;
+    }
+
+    .roland-mini span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.3;
+      margin-top: 3px;
+    }
+
+    .hero-image-area {
+      position: relative;
+      min-height: 560px;
+    }
+
+    .hero-image-area::before {
+      content: "";
+      position: absolute;
+      left: -2px;
+      top: 0;
+      width: 240px;
+      height: 100%;
+      background: linear-gradient(90deg, var(--cream) 0%, rgba(250, 246, 237, 0.58) 42%, rgba(250, 246, 237, 0) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-image-area img {
       width: 100%;
+      height: 100%;
+      min-height: 560px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .quick-cards {
+      margin: -14px auto 0;
+      padding: 0 5% 52px;
+      max-width: 1240px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 26px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .quick-card {
+      background: rgba(255, 253, 247, 0.96);
+      border: 1px solid rgba(54, 95, 43, 0.13);
+      border-radius: 18px;
+      padding: 24px 22px 22px;
+      min-height: 178px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .quick-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #efeee6;
+      color: var(--green-deep);
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(54, 95, 43, 0.10);
+    }
+
+    .quick-card h3 {
+      margin: 0 0 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--green-deep);
+      font-size: 25px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .quick-card p {
+      margin: 0;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .quick-arrow {
+      margin-top: 20px;
+      color: var(--green-deep);
+      font-size: 22px;
+      align-self: flex-end;
+    }
+
+    section {
+      padding: 62px 5%;
+    }
+
+    .process {
+      background: #fffdf7;
+    }
+
+    .process-top {
+      max-width: 1120px;
+      margin: 0 auto 34px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .process h2 {
+      margin: 0;
+      color: var(--green-deep);
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.05;
+    }
+
+    .process-intro {
+      color: var(--text);
+      font-size: 17px;
+      margin: 8px 0 0;
+      max-width: 480px;
+    }
+
+    .process-steps {
+      max-width: 1050px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      align-items: start;
+      position: relative;
+    }
+
+    .step {
       text-align: center;
+      position: relative;
     }
 
-    .roland-intro-card {
-      align-items: flex-start;
+    .step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      top: 34px;
+      right: -20px;
+      color: var(--green);
+      font-size: 32px;
+      font-weight: 300;
     }
 
-    .roland-intro-card img {
-      width: 68px;
-      height: 68px;
+    .step-icon {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px;
+      background: var(--cream);
+      border: 2px solid var(--gold-soft);
+      color: var(--green-deep);
+      font-size: 34px;
     }
-  }
-</style>
+
+    .step h3 {
+      margin: 0 0 6px;
+      color: var(--green-deep);
+      font-size: 17px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .tests {
+      background: #fffdf7;
+      padding-top: 20px;
+    }
+
+    .test-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .test-card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(54, 95, 43, 0.12);
+    }
+
+    .test-image {
+      height: 118px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .test-image.balance {
+      background:
+        linear-gradient(rgba(36, 69, 31, 0.05), rgba(36, 69, 31, 0.05)),
+        radial-gradient(circle at 30% 40%, #b6ad8a, transparent 18%),
+        linear-gradient(135deg, #d9d4c5, #f8f3e6);
+    }
+
+    .test-image.vitamin {
+      background:
+        radial-gradient(circle at 65% 35%, rgba(255, 210, 75, 0.90), transparent 18%),
+        linear-gradient(135deg, #c7b66b, #fff0a4 45%, #e4c66a);
+    }
+
+    .test-image.hba1c {
+      background:
+        radial-gradient(circle at 48% 42%, rgba(255,255,255,0.7), transparent 10%),
+        linear-gradient(135deg, #668f3c, #c7db9b);
+    }
+
+    .test-image.darm {
+      background:
+        linear-gradient(135deg, #9eb47f, #e3ead2);
+    }
+
+    .test-badge {
+      position: absolute;
+      left: 18px;
+      bottom: -28px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--cream-card);
+      border: 2px solid var(--gold-soft);
+      display: grid;
+      place-items: center;
+      color: var(--green-deep);
+      font-size: 28px;
+    }
+
+    .test-content {
+      padding: 38px 20px 22px;
+    }
+
+    .test-content h3 {
+      margin: 0 0 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--green-deep);
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .test-content p {
+      margin: 0 0 18px;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.38;
+    }
+
+    .more-link {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .quote-band {
+      max-width: 1180px;
+      margin: 0 auto;
+      background:
+        radial-gradient(circle at 0% 80%, rgba(54, 95, 43, 0.12), transparent 22%),
+        linear-gradient(90deg, #f7ecd8, #fffdf7);
+      border: 1px solid rgba(196, 154, 68, 0.22);
+      border-radius: 24px 24px 0 0;
+      padding: 28px 36px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .quote-band blockquote {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--green-deep);
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .quote-band p {
+      margin: 0;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .about,
+    .business,
+    .contact {
+      background: var(--cream);
+    }
+
+    .simple-section {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 38px;
+      align-items: center;
+      background: rgba(255, 253, 247, 0.86);
+      border: 1px solid rgba(54, 95, 43, 0.12);
+      border-radius: 26px;
+      padding: 34px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .about-image {
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(196, 154, 68, 0.20);
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      color: var(--green-deep);
+      font-size: clamp(32px, 3vw, 46px);
+      line-height: 1.08;
+    }
+
+    .section-copy {
+      color: var(--text);
+      font-size: 17px;
+      margin: 0 0 14px;
+    }
+
+    .contact-box {
+      max-width: 1120px;
+      margin: 0 auto;
+      background: var(--green-deep);
+      color: #fff;
+      border-radius: 26px;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h2 {
+      margin: 0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(32px, 3.2vw, 46px);
+      line-height: 1.05;
+      font-weight: 500;
+    }
+
+    .contact-box p {
+      margin: 0;
+      color: #eef4ea;
+      font-size: 17px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    footer {
+      padding: 30px 5%;
+      background: #fffdf7;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer strong {
+      color: var(--green-deep);
+    }
+
+    @media (max-width: 1100px) {
+      .header-inner {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .header-cta {
+        justify-self: start;
+      }
+
+      .hero-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        max-width: none;
+        padding: 48px 6% 28px;
+      }
+
+      .hero-copy::after,
+      .hero-image-area::before {
+        display: none;
+      }
+
+      .hero-image-area,
+      .hero-image-area img {
+        min-height: auto;
+      }
+
+      .quick-cards,
+      .test-grid,
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .step:not(:last-child)::after {
+        display: none;
+      }
+
+      .process-top,
+      .quote-band,
+      .simple-section,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .brand {
+        display: block;
+      }
+
+      .brand-divider,
+      .brand-subtitle {
+        display: none;
+      }
+
+      .header-inner {
+        padding: 16px 6%;
+      }
+
+      .nav {
+        gap: 8px 14px;
+      }
+
+      .nav a {
+        font-size: 13px;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .claim-box {
+        font-size: 22px;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .quick-cards,
+      .test-grid,
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      section {
+        padding-left: 6%;
+        padding-right: 6%;
+      }
+
+      .quote-band,
+      .simple-section,
+      .contact-box {
+        padding: 28px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <header>
-    <div class="logo">Roland Nesler</div>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-name">Roland Nesler</span>
+        <span class="brand-divider">|</span>
+        <span class="brand-subtitle">Messbare Gesundheit</span>
+      </div>
 
-    <nav class="nav-links">
-  <a href="#start">Start</a>
-  <a href="#gesundheit">Gesundheit verstehen</a>
-  <a href="#messen">Messen & Orientierung</a>
-  <a href="#versorgung">Gezielte Versorgung</a>
-  <a href="#was-passt">Was passt zu mir?</a>
-  <a href="#business">Business entdecken</a>
-  <a href="#ueber">Über Roland</a>
-  <a href="#kontakt">Kontakt</a>
-</nav>
+      <nav class="nav">
+        <a href="#start">Start</a>
+        <a href="#gesundheit">Gesundheit verstehen</a>
+        <a href="#messen">Messen &amp; Orientierung</a>
+        <a href="#versorgung">Gezielte Versorgung</a>
+        <a href="#was-passt">Was passt zu mir?</a>
+        <a href="#business">Business entdecken</a>
+        <a href="#ueber">Über Roland</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
 
-    <button class="burger" aria-label="Menü öffnen" aria-controls="main-nav" aria-expanded="false">
-      ☰
-    </button>
+      <a class="header-cta" href="#kontakt">▣ Termin anfragen</a>
+    </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div>
-<div class="eyebrow"><span></span> Roland Nesler · Messbare Gesundheit</div>
+    <section id="start" class="hero">
+      <div class="hero-wrap">
+        <div class="hero-copy">
+          <h1 class="serif">Verstehst du,<br>was dein Körper<br>braucht?</h1>
 
-<h1>Verstehst du, was dein Körper braucht?</h1>
+          <div class="gold-line"></div>
 
-<p>
-  Gesundheit beginnt mit Verstehen. Durch testbasiertes Messen erkennen wir,
-  was deinem Körper guttut – und treffen bewusstere Entscheidungen für mehr
-  Energie, Balance und Lebensqualität.
-</p>
-
-<p style="font-weight: 700; color: var(--green-dark); margin-top: -8px; margin-bottom: 28px;">
-  Messen – gezielt versorgen – Verlauf kontrollieren.
-</p>
-
-<div class="buttons">
-  <a class="button primary" href="#gesundheit">Gesundheit verstehen</a>
-  <a class="button secondary" href="#kontakt">Termin anfragen</a>
-</div>
-      </div>
-
-      <div class="hero-card">
-  <div class="hero-image">
-    <img
-      src="hero-family.png"
-  alt="Familie mit drei Generationen beim gemeinsamen Essen im Garten"
-    />
-  </div>
-
-  <div class="hero-caption">
-    Persönlich. Messbar. Alltagstauglich.
-  </div>
-</div>
-    </section>
-
-    <section id="gesundheit">
-      <div class="section-title">
-        <h2>Messen – gezielt versorgen – Verlauf kontrollieren</h2>
-        <p>
-          Gesundheitliche Entscheidungen werden klarer, wenn sie nicht nur auf Vermutungen,
-          sondern auf nachvollziehbarer Orientierung beruhen.
-        </p>
-      </div>
-
-      <div class="cards">
-        <div class="card">
-          <div class="number">1</div>
-          <h3>Messen</h3>
-          <p>
-            Home Health Tests können Orientierung geben und helfen, persönliche Ausgangswerte
-            besser zu verstehen.
+          <p class="hero-text">
+            Gesundheit beginnt mit Verstehen. Durch testbasiertes Messen erkennen wir,
+            was deinem Körper guttut – und treffen bewusstere Entscheidungen für mehr
+            Energie, Balance und Lebensqualität.
           </p>
-        </div>
 
-        <div class="card">
-          <div class="number">2</div>
-          <h3>Gezielt versorgen</h3>
-          <p>
-            Auf Basis von Messergebnissen lassen sich Ernährung, Routinen und Versorgung
-            bewusster betrachten.
-          </p>
-        </div>
+          <div class="claim-box">
+            Messen – gezielt versorgen – Verlauf kontrollieren.
+          </div>
 
-        <div class="card">
-          <div class="number">3</div>
-          <h3>Verlauf kontrollieren</h3>
-          <p>
-            Regelmäßige Kontrolle macht Veränderungen sichtbar und unterstützt langfristige
-            Gesundheitsentscheidungen.
-          </p>
-        </div>
-      </div>
-    </section>
+          <div class="hero-buttons">
+            <a class="button button-primary" href="#gesundheit">Gesundheit verstehen ›</a>
+            <a class="button button-secondary" href="#kontakt">Termin anfragen ▣</a>
+          </div>
 
-    <section id="tests" class="band">
-      <div class="section-title">
-        <h2>Zinzino Home Health Tests</h2>
-        <p>
-          Der Fokus liegt zunächst auf ausgewählten Tests, die Menschen dabei unterstützen können,
-          persönliche Gesundheitsdaten besser einzuordnen.
-        </p>
-      </div>
-
-      <div class="cards">
-        <div class="card">
-          <h3>BalanceTest</h3>
-          <p>
-            Ein Selbsttest für zu Hause zur Analyse ausgewählter Fettsäurewerte.
-            Er kann als Ausgangspunkt dienen, um Versorgung und Verlauf bewusster zu betrachten.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Gut Health Test</h3>
-          <p>
-            Ein Testkonzept zur Betrachtung ausgewählter Marker im Zusammenhang mit
-            Darmgesundheit und Stoffwechsel.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Weitere Tests</h3>
-          <p>
-            Je nach Markt und Verfügbarkeit können weitere Tests wie Vitamin D oder HbA1c
-            relevant sein. Aktuelle Details findest du direkt im offiziellen Zinzino-Shop.
-          </p>
-        </div>
-      </div>
-
-      <div class="notice">
-        Die Inhalte dieser Website dienen der Information und ersetzen keine ärztliche Diagnose,
-        Beratung oder Behandlung.
-      </div>
-    </section>
-
-    <section id="produkte">
-      <div class="section-title">
-        <h2>Produkte bewusst auswählen</h2>
-        <p>
-          Produkte sollten nicht beliebig ausgewählt werden. Mein Ansatz ist:
-          zuerst Orientierung schaffen, dann gezielt entscheiden und den Verlauf im Blick behalten.
-        </p>
-      </div>
-
-      <div class="cards two">
-        <div class="card">
-          <h3>Für Kunden</h3>
-          <p>
-            Du möchtest wissen, welche Tests und Produkte für dich grundsätzlich interessant sein könnten?
-            Dann starten wir mit einem persönlichen Gespräch und klären deine Ziele und Fragen.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Aktuelle Informationen</h3>
-          <p>
-            Preise, Verfügbarkeit, Aktionen und Bestellinformationen können sich je nach Markt ändern.
-            Deshalb findest du aktuelle Details direkt im offiziellen Zinzino-Shop.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="ueber">
-      <div class="wide">
-        <div class="split">
-          <img
-  src="roland-portrait-sharp.png"
-  alt="Portrait von Roland Nesler"
-  class="about-image"
-/>
-
-          <div>
-            <h2>Über Roland</h2>
-
-            <p>
-              Ich bin Professional Wellnesstrainer, Ernährungs- und Gesundheits-Coach
-              und Zinzino-Partner. Gesundheit bedeutet für mich nicht kurzfristige Trends,
-              sondern bewusste Entscheidungen, alltagstaugliche Umsetzung und messbare Entwicklung.
-            </p>
-
-            <p>
-              Sport, gesunde Ernährung, Krafttraining, Mountainbike fahren, Bergwandern,
-              Segeln, Skilaufen und Kochen gehören zu meinem Leben – und prägen auch meinen
-              persönlichen Zugang zu Gesundheit.
-            </p>
-
-            <div class="highlight-list">
-              <div class="highlight">Persönliche Begleitung statt anonymer Produktverkauf</div>
-              <div class="highlight">Fokus auf Messbarkeit, Alltag und langfristige Umsetzung</div>
-              <div class="highlight">Seriöse Kommunikation ohne Heil- oder Erfolgsversprechen</div>
+          <div class="roland-mini">
+            <img src="roland-im-gruenen.jpeg" alt="Roland Nesler im Grünen">
+            <div>
+              <strong>Roland Nesler</strong>
+              <span>Professional Wellnesstrainer · persönliche Begleitung für messbare Gesundheit</span>
             </div>
           </div>
         </div>
+
+        <div class="hero-image-area">
+          <img src="hero-family.png" alt="Familie mit drei Generationen beim gemeinsamen Essen im Garten">
+        </div>
+      </div>
+
+      <div class="quick-cards">
+        <a class="quick-card" href="#was-passt">
+          <div>
+            <div class="quick-icon">♁</div>
+            <h3>Für mich &amp;<br>meine Familie</h3>
+            <p>Individuell. Ganzheitlich. Für mehr Wohlbefinden im Alltag.</p>
+          </div>
+          <div class="quick-arrow">›</div>
+        </a>
+
+        <a class="quick-card" href="#messen">
+          <div>
+            <div class="quick-icon">⌕</div>
+            <h3>Messen &amp;<br>Orientierung</h3>
+            <p>Die richtigen Tests geben Klarheit über deinen Gesundheitszustand.</p>
+          </div>
+          <div class="quick-arrow">›</div>
+        </a>
+
+        <a class="quick-card" href="#versorgung">
+          <div>
+            <div class="quick-icon">♧</div>
+            <h3>Gezielte Versorgung /<br>Bestellen</h3>
+            <p>Gezielt das tun, was dein Körper wirklich braucht.</p>
+          </div>
+          <div class="quick-arrow">›</div>
+        </a>
+
+        <a class="quick-card" href="#business">
+          <div>
+            <div class="quick-icon">🤝</div>
+            <h3>Business<br>entdecken</h3>
+            <p>Gemeinsam Gesundheit bewusst praktizieren und weitergeben.</p>
+          </div>
+          <div class="quick-arrow">›</div>
+        </a>
       </div>
     </section>
 
-    <section id="partner" class="band">
-      <div class="section-title">
-        <h2>Partner werden</h2>
-        <p>
-          Für Menschen, die sich für Gesundheit, Messbarkeit und ein internationales Partnerbusiness
-          interessieren, kann Zinzino eine spannende Möglichkeit sein.
+    <section id="gesundheit" class="process">
+      <div class="process-top">
+        <h2 class="serif">Was ist besser,<br>wenn es um deine Gesundheit geht:<br>raten oder messen?</h2>
+        <p class="process-intro">
+          Wir setzen auf Testdaten statt Vermutungen. So verstehst du, was dein Körper
+          wirklich braucht – und kannst gezielt handeln.
         </p>
       </div>
 
-      <div class="cards two">
-        <div class="card">
-          <h3>Für wen kann das interessant sein?</h3>
-          <p>
-            Für Menschen, die gerne mit anderen Menschen arbeiten, sich für Gesundheit interessieren
-            und ein Partnerbusiness seriös, langfristig und persönlich aufbauen möchten.
-          </p>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-icon">⚖</div>
+          <h3>Messen</h3>
+          <p>Wir analysieren relevante Werte mit zuverlässigen Tests.</p>
         </div>
 
-        <div class="card">
-          <h3>Ohne Einkommensversprechen</h3>
-          <p>
-            Zinzino bietet ein Partnerprogramm mit Vergütungsmöglichkeiten gemäß offiziellem
-            Compensation Plan. Ob und in welcher Höhe Einnahmen entstehen, hängt von persönlicher
-            Aktivität, Kundenaufbau, Teamaufbau, Marktumfeld, Qualifikation und Umsetzung ab.
+        <div class="step">
+          <div class="step-icon">☷</div>
+          <h3>Verstehen</h3>
+          <p>Wir interpretieren deine Ergebnisse verständlich und individuell.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-icon">♧</div>
+          <h3>Gezielt versorgen</h3>
+          <p>Wir empfehlen, was deinem Körper guttut – passend zu deinem Bedarf.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-icon">↗</div>
+          <h3>Verlauf kontrollieren</h3>
+          <p>Wir messen erneut und machen Fortschritte sichtbar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="messen" class="tests">
+      <div class="test-grid">
+        <article class="test-card">
+          <div class="test-image balance">
+            <div class="test-badge">⚖</div>
+          </div>
+          <div class="test-content">
+            <h3>BalanceTest</h3>
+            <p>Dein individueller Check für wichtige Fettsäuren und Orientierung im Alltag.</p>
+            <a class="more-link" href="#kontakt">Mehr erfahren ›</a>
+          </div>
+        </article>
+
+        <article class="test-card">
+          <div class="test-image vitamin">
+            <div class="test-badge">☼</div>
+          </div>
+          <div class="test-content">
+            <h3>Vitamin-D-Test</h3>
+            <p>Für Knochen, Immunsystem und Energie – wissen, was dir guttut.</p>
+            <a class="more-link" href="#kontakt">Mehr erfahren ›</a>
+          </div>
+        </article>
+
+        <article class="test-card">
+          <div class="test-image hba1c">
+            <div class="test-badge">◌</div>
+          </div>
+          <div class="test-content">
+            <h3>HbA1c-Test</h3>
+            <p>Langzeitwert für deinen Blutzucker – Klarheit für mehr Balance.</p>
+            <a class="more-link" href="#kontakt">Mehr erfahren ›</a>
+          </div>
+        </article>
+
+        <article class="test-card">
+          <div class="test-image darm">
+            <div class="test-badge">☷</div>
+          </div>
+          <div class="test-content">
+            <h3>Darmgesundheits-Test</h3>
+            <p>Dein Darm im Fokus – für Wohlbefinden von innen heraus.</p>
+            <a class="more-link" href="#kontakt">Mehr erfahren ›</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="versorgung" class="quote-section">
+      <div class="quote-band">
+        <blockquote>„Gesundheit ist kein Zufall.“</blockquote>
+        <p>
+          Wissenschaftlich fundiert. Wir arbeiten mit etablierten Laboren,
+          moderner Testlogik und alltagstauglicher Begleitung.
+        </p>
+      </div>
+    </section>
+
+    <section id="was-passt" class="about">
+      <div class="simple-section">
+        <div>
+          <h2 class="section-title serif">Was passt zu mir?</h2>
+          <p class="section-copy">
+            Jeder Mensch startet an einem anderen Punkt. Deshalb beginnt mein Ansatz
+            nicht mit einem Produkt, sondern mit Orientierung: Was möchtest du verbessern,
+            verstehen oder gezielt begleiten?
+          </p>
+          <p class="section-copy">
+            Gemeinsam schauen wir, welche Tests und nächsten Schritte für dich sinnvoll sein können.
+          </p>
+        </div>
+        <div>
+          <p class="section-copy">
+            Besonders interessant ist dieser Ansatz für Menschen, die Gesundheit aktiv gestalten möchten:
+            Familien, Sportler, Frauen mit Kinderwunsch, Schwangere, Stillende, gesundheitsbewusste Menschen
+            und alle, die nicht länger raten möchten.
           </p>
         </div>
       </div>
     </section>
 
-    <section id="kontakt">
+    <section id="business" class="business">
+      <div class="simple-section">
+        <div>
+          <h2 class="section-title serif">Business entdecken</h2>
+          <p class="section-copy">
+            Für Menschen, die sich für Gesundheit, Messbarkeit und ein internationales
+            Partnerbusiness interessieren, kann Zinzino eine spannende Möglichkeit sein.
+          </p>
+        </div>
+        <div>
+          <p class="section-copy">
+            Ohne Einkommensversprechen. Ob und in welcher Höhe Einnahmen entstehen,
+            hängt von persönlicher Aktivität, Kundenaufbau, Teamaufbau, Marktumfeld,
+            Qualifikation und Umsetzung ab.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ueber" class="about">
+      <div class="simple-section">
+        <img
+          src="roland-portrait-sharp.png"
+          alt="Portrait von Roland Nesler"
+          class="about-image"
+        >
+
+        <div>
+          <h2 class="section-title serif">Über Roland</h2>
+          <p class="section-copy">
+            Ich bin Professional Wellnesstrainer, Ernährungs- und Gesundheits-Coach
+            und Zinzino-Partner. Gesundheit bedeutet für mich nicht kurzfristige Trends,
+            sondern bewusste Entscheidungen, alltagstaugliche Umsetzung und messbare Entwicklung.
+          </p>
+          <p class="section-copy">
+            Sport, gesunde Ernährung, Krafttraining, Mountainbike fahren, Bergwandern,
+            Segeln, Skilaufen und Kochen gehören zu meinem Leben – und prägen auch meinen
+            persönlichen Zugang zu Gesundheit.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="contact">
       <div class="contact-box">
         <div>
           <h2>Lass uns sprechen</h2>
@@ -859,22 +1076,17 @@
           </p>
         </div>
 
-        <div class="buttons">
-          <a class="button primary" href="mailto:roland.nesler@gmail.com">E-Mail schreiben</a>
-          <a class="button secondary" href="#">Offiziellen Zinzino-Shop öffnen</a>
+        <div class="contact-actions">
+          <a class="button button-primary" href="mailto:roland.nesler@gmail.com">E-Mail schreiben</a>
+          <a class="button button-secondary" href="#">Zinzino-Shop öffnen</a>
         </div>
       </div>
-
-      <p class="note">
-        Hinweis: Aktuelle Preise, Verfügbarkeit und Bestellinformationen findest du direkt im offiziellen
-        Zinzino-Shop. Der finale Partnerlink wird noch eingefügt. Impressum und Datenschutz werden ergänzt.
-      </p>
     </section>
   </main>
 
   <footer>
-    <strong>Roland Nesler</strong> · Testbasierte Gesundheit mit Zinzino ·
-    © 2026 · Impressum und Datenschutz werden ergänzt.
+    <strong>Roland Nesler</strong> · Messbare Gesundheit · © 2026 · Impressum und Datenschutz werden ergänzt.
   </footer>
 </body>
 </html>
+
