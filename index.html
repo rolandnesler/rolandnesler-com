@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Roland Nesler | Messbare Gesundheit</title>
-  <meta name="description" content="Roland Nesler begleitet Menschen dabei, ihren Körper besser zu verstehen – mit testbasierter Gesundheit, gezielter Versorgung und persönlicher Begleitung." />
-
-  <style>
+ <style>
     :root {
       --cream: #fbf7ee;
       --cream-2: #f4ead7;
@@ -932,11 +923,59 @@
       font-size: 17px;
     }
 
+    .contact-details {
+      margin-top: 22px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .contact-details p {
+      margin: 0;
+      color: #eef4ea;
+      font-size: 15px;
+    }
+
+    .contact-details a {
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .contact-details a:hover {
+      border-bottom-color: #fff;
+    }
+
     .contact-actions {
-      display: flex;
-      justify-content: flex-end;
-      flex-wrap: wrap;
+      display: grid;
+      justify-content: stretch;
       gap: 12px;
+    }
+
+    .contact-actions .button {
+      width: 100%;
+      min-width: 0;
+      text-align: center;
+    }
+
+    .button-muted {
+      color: rgba(255, 255, 255, 0.78);
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      cursor: default;
+    }
+
+    .button-muted:hover {
+      transform: none;
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    .contact-note {
+      max-width: 1120px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
     }
 
     footer {
@@ -1420,15 +1459,36 @@
           <h2>Lass uns sprechen</h2>
           <p>
             Du möchtest wissen, ob die Tests, Produkte oder die Partnerchance zu dir passen?
-            Dann vereinbaren wir am besten ein persönliches Gespräch.
+            Dann starten wir am besten mit einem kurzen persönlichen Gespräch.
           </p>
+
+          <div class="contact-details">
+            <p><strong>E-Mail:</strong> <a href="mailto:roland.nesler@gmail.com">roland.nesler@gmail.com</a></p>
+            <p><strong>Website:</strong> rolandnesler.com</p>
+          </div>
         </div>
 
         <div class="contact-actions">
-          <a class="button button-primary" href="mailto:roland.nesler@gmail.com">E-Mail schreiben</a>
-          <a class="button button-secondary" href="#">Zinzino-Shop öffnen</a>
+          <a class="button button-primary" href="mailto:roland.nesler@gmail.com?subject=Anfrage%20%C3%BCber%20rolandnesler.com">
+            E-Mail schreiben
+          </a>
+
+          <a class="button button-secondary" href="mailto:roland.nesler@gmail.com?subject=Gespr%C3%A4chsanfrage%20Zinzino%20%2F%20testbasierte%20Gesundheit">
+            Gespräch anfragen
+          </a>
+
+          <a class="button button-muted" href="#kontakt" aria-label="Offizieller Zinzino-Shop wird später ergänzt">
+            Zinzino-Shop folgt
+          </a>
         </div>
       </div>
+
+      <p class="contact-note">
+        Hinweis: Aktuelle Preise, Verfügbarkeit und Bestellinformationen findest du später direkt im offiziellen
+        Zinzino-Shop über Rolands persönlichen Partnerlink. Der finale Partnerlink wird noch eingefügt.
+        Die Inhalte dieser Website dienen der Information und ersetzen keine ärztliche Diagnose, Beratung oder Behandlung.
+        Impressum und Datenschutz werden ergänzt.
+      </p>
     </section>
   </main>
 
