@@ -779,6 +779,132 @@
       font-size: 13px;
     }
 
+    .topics {
+      background:
+        radial-gradient(circle at 88% 10%, rgba(196,154,68,0.12), transparent 24%),
+        var(--cream);
+      padding-top: 76px;
+      padding-bottom: 76px;
+    }
+
+    .topics-shell {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .topics-head {
+      max-width: 780px;
+      margin-bottom: 34px;
+    }
+
+    .topics-head h2 {
+      margin: 0 0 16px;
+      color: var(--green-deep);
+      font-size: clamp(34px, 3.8vw, 54px);
+      line-height: 1.06;
+      position: relative;
+    }
+
+    .topics-head h2::after {
+      content: "";
+      display: block;
+      width: 86px;
+      height: 2px;
+      margin-top: 18px;
+      background: var(--gold);
+      border-radius: 999px;
+    }
+
+    .topics-head p {
+      margin: 0;
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .topic-card {
+      position: relative;
+      min-height: 260px;
+      padding: 26px 22px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      background:
+        linear-gradient(180deg, rgba(255,253,247,0.98), rgba(250,246,237,0.92));
+      border: 1px solid rgba(196,154,68,0.22);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 44px rgba(33,63,29,0.13);
+    }
+
+    .topic-card::before {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: 0;
+      width: 58px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 0 0 999px 999px;
+    }
+
+    .topic-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--green-soft);
+      border: 1px solid rgba(54,95,43,0.12);
+      color: var(--green-deep);
+      font-size: 27px;
+    }
+
+    .topic-card h3 {
+      margin: 0 0 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--green-deep);
+      font-size: 25px;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+    }
+
+    .topic-card p {
+      margin: 0;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .topic-link {
+      margin-top: 18px;
+      color: var(--green);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .topics-note {
+      max-width: 980px;
+      margin: 24px auto 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
     .quote-section {
       background: #fffdf7;
       padding-top: 12px;
@@ -1008,6 +1134,7 @@
 
       .quick-card,
       .test-card,
+      .topic-card,
       .button,
       .header-cta,
       .brand-media {
@@ -1062,6 +1189,7 @@
 
       .quick-cards,
       .test-grid,
+      .topics-grid,
       .process-steps {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -1141,6 +1269,7 @@
 
       .quick-cards,
       .test-grid,
+      .topics-grid,
       .process-steps {
         grid-template-columns: 1fr;
       }
@@ -1197,6 +1326,7 @@
       <a href="#start">Start</a>
       <a href="#gesundheit">Gesundheit verstehen</a>
       <a href="#messen">Messen &amp; Orientierung</a>
+      <a href="#themen">Schwerpunktthemen</a>
       <a href="#versorgung">Gezielte Versorgung</a>
       <a href="#was-passt">Was passt zu mir?</a>
       <a href="#business">Business entdecken</a>
@@ -1369,6 +1499,76 @@
             <a class="more-link" href="#kontakt">Mehr erfahren ›</a>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section id="themen" class="topics">
+      <div class="topics-shell">
+        <div class="topics-head">
+          <h2 class="serif">Aktuelle Schwerpunktthemen</h2>
+          <p>
+            Gesundheit betrifft unterschiedliche Lebensphasen und Alltagssituationen.
+            Deshalb werden hier nach und nach ausgewählte Themen vertieft – immer mit dem Ziel:
+            besser verstehen, bewusster entscheiden und nicht nur vermuten.
+          </p>
+        </div>
+
+        <div class="topics-grid">
+          <a class="topic-card" href="#kontakt">
+            <div>
+              <div class="topic-icon">♡</div>
+              <h3>Schwangerschaft &amp; Stillzeit</h3>
+              <p>
+                Für Frauen, die in dieser besonderen Lebensphase ihre Versorgung mit wichtigen
+                Fettsäuren bewusst betrachten möchten.
+              </p>
+            </div>
+            <div class="topic-link">Orientierung anfragen ›</div>
+          </a>
+
+          <a class="topic-card" href="#kontakt">
+            <div>
+              <div class="topic-icon">↗</div>
+              <h3>Sport &amp; Regeneration</h3>
+              <p>
+                Für aktive Menschen, die Belastung, Erholung und Versorgung besser einordnen
+                und gezielter begleiten möchten.
+              </p>
+            </div>
+            <div class="topic-link">Mehr erfahren ›</div>
+          </a>
+
+          <a class="topic-card" href="#kontakt">
+            <div>
+              <div class="topic-icon">☷</div>
+              <h3>Entzündung verstehen</h3>
+              <p>
+                Wie Ernährung, Fettsäuren, Lebensstil und Messwerte im Zusammenhang mit stillen
+                Entzündungsprozessen eine Rolle spielen können.
+              </p>
+            </div>
+            <div class="topic-link">Thema vormerken ›</div>
+          </a>
+
+          <a class="topic-card" href="#kontakt">
+            <div>
+              <div class="topic-icon">▣</div>
+              <h3>Unternehmen &amp; Mitarbeitergesundheit</h3>
+              <p>
+                Für Unternehmen, die Gesundheit im Team greifbarer machen und Mitarbeiter
+                bewusster unterstützen möchten.
+              </p>
+            </div>
+            <div class="topic-link">Gespräch anfragen ›</div>
+          </a>
+        </div>
+
+        <p class="topics-note">
+          Die Schwerpunktthemen dienen der allgemeinen Information und Orientierung.
+          Sie ersetzen keine ärztliche Diagnose, Beratung oder Behandlung. Bei bestehenden
+          Erkrankungen oder Beschwerden sollte die individuelle Situation immer mit ärztlichen
+          oder therapeutischen Fachpersonen besprochen werden.
+        </p>
       </div>
     </section>
 
