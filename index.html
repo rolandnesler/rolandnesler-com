@@ -907,56 +907,124 @@
       line-height: 1.55;
     }
 
-    .quote-section {
-      background: #fffdf7;
-      padding-top: 12px;
-    }
-
-    .quote-band {
-      position: relative;
-      overflow: hidden;
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 34px 38px;
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 34px;
-      align-items: center;
-      border: 1px solid rgba(196,154,68,0.24);
-      border-radius: 26px 26px 0 0;
+    .protocol {
       background:
-        radial-gradient(circle at 0% 85%, rgba(54,95,43,0.12), transparent 22%),
-        linear-gradient(90deg, #f7ecd8, #fffdf7);
-      box-shadow: inset 0 1px 0 rgba(255,253,247,0.82);
+        radial-gradient(circle at 10% 20%, rgba(196,154,68,0.10), transparent 25%),
+        #fffdf7;
+      padding-top: 76px;
+      padding-bottom: 76px;
     }
 
-    .quote-band::before {
-      content: "☘";
+    .protocol-shell {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .protocol-head {
+      max-width: 850px;
+      margin-bottom: 34px;
+    }
+
+    .protocol-head h2 {
+      margin: 0 0 16px;
+      color: var(--green-deep);
+      font-size: clamp(34px, 3.8vw, 54px);
+      line-height: 1.06;
+      position: relative;
+    }
+
+    .protocol-head h2::after {
+      content: "";
+      display: block;
+      width: 86px;
+      height: 2px;
+      margin-top: 18px;
+      background: var(--gold);
+      border-radius: 999px;
+    }
+
+    .protocol-head p {
+      margin: 0 0 14px;
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .protocol-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .protocol-card {
+      position: relative;
+      min-height: 245px;
+      padding: 28px 22px 24px;
+      background:
+        linear-gradient(180deg, rgba(255,253,247,0.98), rgba(250,246,237,0.94));
+      border: 1px solid rgba(196,154,68,0.22);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .protocol-card::before {
+      content: "";
       position: absolute;
-      left: 26px;
-      bottom: 6px;
-      color: rgba(54,95,43,0.16);
-      font-size: 66px;
-      line-height: 1;
-      transform: rotate(-18deg);
+      left: 22px;
+      top: 0;
+      width: 58px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 0 0 999px 999px;
     }
 
-    .quote-band blockquote {
-      margin: 0;
+    .protocol-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--green-soft);
+      border: 1px solid rgba(54,95,43,0.12);
+      color: var(--green-deep);
+      font-size: 26px;
+    }
+
+    .protocol-card h3 {
+      margin: 0 0 12px;
       font-family: Georgia, "Times New Roman", serif;
       color: var(--green-deep);
-      font-size: 31px;
-      line-height: 1.18;
-      position: relative;
-      z-index: 1;
+      font-size: 25px;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
     }
 
-    .quote-band p {
+    .protocol-card p {
       margin: 0;
       color: var(--text);
+      font-size: 14px;
+      line-height: 1.48;
+    }
+
+    .protocol-note {
+      margin-top: 28px;
+      padding: 24px 26px;
+      border-radius: 22px;
+      border: 1px solid rgba(54,95,43,0.14);
+      background: rgba(237,244,232,0.72);
+      color: var(--text);
       font-size: 15px;
-      position: relative;
-      z-index: 1;
+      line-height: 1.6;
+    }
+
+    .protocol-actions {
+      margin-top: 24px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .content-section {
@@ -1192,6 +1260,7 @@
       .quick-cards,
       .test-grid,
       .topics-grid,
+      .protocol-grid,
       .process-steps {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -1201,7 +1270,6 @@
       }
 
       .process-top,
-      .quote-band,
       .simple-section,
       .contact-box {
         grid-template-columns: 1fr;
@@ -1272,6 +1340,7 @@
       .quick-cards,
       .test-grid,
       .topics-grid,
+      .protocol-grid,
       .process-steps {
         grid-template-columns: 1fr;
       }
@@ -1286,9 +1355,9 @@
         padding-right: 6%;
       }
 
-      .quote-band,
       .simple-section,
-      .contact-box {
+      .contact-box,
+      .protocol-note {
         padding: 28px;
       }
 
@@ -1574,13 +1643,73 @@
       </div>
     </section>
 
-    <section id="versorgung" class="quote-section">
-      <div class="quote-band">
-        <blockquote>„Gesundheit ist kein Zufall.“</blockquote>
-        <p>
-          Wissenschaftlich fundiert. Wir arbeiten mit etablierten Laboren,
-          moderner Testlogik und alltagstauglicher Begleitung.
-        </p>
+    <section id="versorgung" class="protocol">
+      <div class="protocol-shell">
+        <div class="protocol-head">
+          <h2 class="serif">Gezielte Versorgung nach dem Test</h2>
+          <p>
+            Nach einem Test werden die Ergebnisse in einem persönlichen Gespräch verständlich besprochen.
+            Daraus entsteht keine pauschale Empfehlung, sondern eine individuelle Orientierung:
+            Was zeigen die Werte? Was passt zur aktuellen Lebenssituation? Welche nächsten Schritte
+            können sinnvoll sein?
+          </p>
+          <p>
+            Dieses Zusammenspiel aus Test, Auswertung, gezielter Versorgung und späterer Kontrolle
+            wird im Zinzino-Konzept häufig als Gesundheitsprotokoll bezeichnet.
+          </p>
+        </div>
+
+        <div class="protocol-grid">
+          <article class="protocol-card">
+            <div class="protocol-icon">Ω</div>
+            <h3>BalanceOil+</h3>
+            <p>
+              Zur gezielten Versorgung mit marinen Omega-3-Fettsäuren im Rahmen des
+              testbasierten Konzepts.
+            </p>
+          </article>
+
+          <article class="protocol-card">
+            <div class="protocol-icon">✦</div>
+            <h3>Xtend+</h3>
+            <p>
+              Ergänzt die tägliche Ernährung mit ausgewählten Vitaminen, Mineralstoffen
+              und Pflanzenstoffen.
+            </p>
+          </article>
+
+          <article class="protocol-card">
+            <div class="protocol-icon">☷</div>
+            <h3>Zinobiotic+</h3>
+            <p>
+              Liefert ausgewählte Ballaststoffe zur Ergänzung einer ballaststoffbewussten
+              Ernährung.
+            </p>
+          </article>
+
+          <article class="protocol-card">
+            <div class="protocol-icon">♡</div>
+            <h3>Viva+ optional</h3>
+            <p>
+              Kann optional im Zusammenhang mit Alltag, innerer Balance und persönlichem
+              Wohlbefinden besprochen werden.
+            </p>
+          </article>
+        </div>
+
+        <div class="protocol-note">
+          Entscheidend ist nicht „ein Produkt für alle“, sondern die Kombination aus
+          individueller Testauswertung, persönlichem Gespräch, gezielter Orientierung
+          und Verlaufskontrolle. Die konkrete Produktauswahl wird immer im Rahmen der
+          offiziellen Produktinformationen und der persönlichen Situation besprochen.
+        </div>
+
+        <div class="protocol-actions">
+          <a class="button button-primary" href="#kontakt">Persönliche Orientierung anfragen</a>
+          <a class="button button-secondary" href="https://www.zinzino.com/2017758669" target="_blank" rel="noopener noreferrer">
+            Tests &amp; Produkte ansehen
+          </a>
+        </div>
       </div>
     </section>
 
