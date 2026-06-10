@@ -1187,9 +1187,9 @@
       max-width: 1120px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 24px;
-      align-items: center;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: start;
       padding: 42px;
       border-radius: 28px;
       border: 1px solid rgba(196,154,68,0.22);
@@ -1237,10 +1237,59 @@
       border-bottom-color: #fff;
     }
 
+    .contact-topic-grid {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .contact-topic {
+      display: block;
+      padding: 18px 16px;
+      border-radius: 18px;
+      text-decoration: none;
+      background: rgba(255, 253, 247, 0.08);
+      border: 1px solid rgba(255, 253, 247, 0.18);
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+
+    .contact-topic:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 253, 247, 0.13);
+    }
+
+    .contact-topic h3 {
+      margin: 0 0 7px;
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+      line-height: 1.08;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-topic p {
+      margin: 0;
+      color: #eef4ea;
+      font-size: 13px;
+      line-height: 1.42;
+    }
+
+    .contact-topic span {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--gold-soft);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
     .contact-actions {
       display: grid;
       justify-content: stretch;
       gap: 12px;
+      position: relative;
+      z-index: 1;
     }
 
     .contact-actions .button {
@@ -1291,6 +1340,7 @@
       .quick-card,
       .test-card,
       .topic-card,
+      .contact-topic,
       .button,
       .header-cta,
       .brand-media {
@@ -1430,7 +1480,8 @@
       .topics-grid,
       .protocol-grid,
       .process-steps,
-      .fit-grid {
+      .fit-grid,
+      .contact-topic-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1929,10 +1980,11 @@
     <section id="kontakt" class="contact">
       <div class="contact-box">
         <div>
-          <h2>Lass uns sprechen</h2>
+          <h2>Lass uns herausfinden, was für dich passt</h2>
           <p>
-            Du möchtest wissen, ob die Tests, Produkte oder die Partnerchance zu dir passen?
-            Dann starten wir am besten mit einem kurzen persönlichen Gespräch.
+            Ob persönliche Gesundheit, Schwangerschaft und Stillzeit, Sport, Unternehmen oder Business:
+            Der beste nächste Schritt ist ein kurzes Gespräch. So können wir klären, welche Tests,
+            Themen oder nächsten Schritte für deine Situation sinnvoll sein können.
           </p>
 
           <div class="contact-details">
@@ -1943,6 +1995,32 @@
               </a>
             </p>
             <p><strong>Website:</strong> rolandnesler.com</p>
+          </div>
+
+          <div class="contact-topic-grid">
+            <a class="contact-topic" href="mailto:roland.nesler@gmail.com?subject=Anfrage%20pers%C3%B6nliche%20Orientierung" target="_blank" rel="noopener noreferrer">
+              <h3>Persönliche Orientierung</h3>
+              <p>Für Tests, Ergebnisse, Versorgung und nächste Schritte.</p>
+              <span>Anfrage senden ›</span>
+            </a>
+
+            <a class="contact-topic" href="mailto:roland.nesler@gmail.com?subject=Anfrage%20Schwangerschaft%20%26%20Stillzeit" target="_blank" rel="noopener noreferrer">
+              <h3>Schwangerschaft &amp; Stillzeit</h3>
+              <p>Für Frauen, die ihre Versorgung bewusster betrachten möchten.</p>
+              <span>Anfrage senden ›</span>
+            </a>
+
+            <a class="contact-topic" href="mailto:roland.nesler@gmail.com?subject=Anfrage%20Business-Gespr%C3%A4ch" target="_blank" rel="noopener noreferrer">
+              <h3>Business entdecken</h3>
+              <p>Für Menschen, die ein flexibles zweites Standbein prüfen möchten.</p>
+              <span>Anfrage senden ›</span>
+            </a>
+
+            <a class="contact-topic" href="mailto:roland.nesler@gmail.com?subject=Anfrage%20Unternehmen%20%26%20Mitarbeitergesundheit" target="_blank" rel="noopener noreferrer">
+              <h3>Unternehmen &amp; Teams</h3>
+              <p>Für Entscheider, die Gesundheit im Arbeitsumfeld greifbarer machen möchten.</p>
+              <span>Anfrage senden ›</span>
+            </a>
           </div>
         </div>
 
