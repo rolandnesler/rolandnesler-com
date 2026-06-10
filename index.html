@@ -10,23 +10,17 @@
   <style>
     :root {
       --cream: #fbf7ee;
-      --cream-2: #f4ead7;
       --paper: #fffdf7;
-
       --green-deep: #203d1d;
       --green: #365f2b;
       --green-soft: #edf4e8;
-
       --gold: #c49a44;
       --gold-soft: #ead9ad;
-
       --text: #1f2a24;
       --muted: #647064;
       --line: rgba(54, 95, 43, 0.14);
-
       --shadow-soft: 0 12px 30px rgba(33, 63, 29, 0.08);
       --shadow-medium: 0 20px 54px rgba(33, 63, 29, 0.12);
-
       --image-fade: 22px;
     }
 
@@ -81,13 +75,10 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background:
-        linear-gradient(180deg, rgba(255, 253, 247, 0.98), rgba(255, 253, 247, 0.94));
+      background: linear-gradient(180deg, rgba(255, 253, 247, 0.98), rgba(255, 253, 247, 0.94));
       backdrop-filter: blur(15px);
       border-bottom: 1px solid rgba(196, 154, 68, 0.18);
-      box-shadow:
-        0 14px 36px rgba(33, 63, 29, 0.08),
-        inset 0 -1px 0 rgba(196, 154, 68, 0.12);
+      box-shadow: 0 14px 36px rgba(33, 63, 29, 0.08), inset 0 -1px 0 rgba(196, 154, 68, 0.12);
     }
 
     .header-top {
@@ -138,8 +129,7 @@
       pointer-events: none;
     }
 
-    .brand-media img,
-    .brand-media video {
+    .brand-media img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
@@ -253,8 +243,7 @@
 
     .portrait-lightbox-card {
       width: min(92vw, 560px);
-      background:
-        linear-gradient(145deg, rgba(255, 253, 247, 0.99), rgba(250, 246, 237, 0.96));
+      background: linear-gradient(145deg, rgba(255, 253, 247, 0.99), rgba(250, 246, 237, 0.96));
       border: 1px solid rgba(196, 154, 68, 0.34);
       border-radius: 30px;
       padding: 22px;
@@ -318,11 +307,6 @@
         linear-gradient(180deg, #fffdf7 0%, #fbf7ee 100%);
     }
 
-    .hero::before,
-    .hero::after {
-      display: none;
-    }
-
     .hero-shell {
       width: 100%;
       max-width: 1540px;
@@ -380,8 +364,7 @@
       line-height: 1.18;
       border-top: 1px solid var(--gold);
       border-bottom: 1px solid var(--gold);
-      background:
-        linear-gradient(90deg, rgba(255, 253, 247, 0), rgba(255, 253, 247, 0.96), rgba(255, 253, 247, 0));
+      background: linear-gradient(90deg, rgba(255, 253, 247, 0), rgba(255, 253, 247, 0.96), rgba(255, 253, 247, 0));
       position: relative;
     }
 
@@ -409,7 +392,9 @@
       background: rgba(196, 154, 68, 0.58);
     }
 
-    .hero-buttons {
+    .hero-buttons,
+    .protocol-actions,
+    .fit-actions {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
@@ -506,8 +491,7 @@
       min-height: 210px;
       padding: 28px 24px 22px;
       text-decoration: none;
-      background:
-        linear-gradient(180deg, rgba(255,253,247,0.985), rgba(250,246,237,0.94));
+      background: linear-gradient(180deg, rgba(255,253,247,0.985), rgba(250,246,237,0.94));
       border: 1px solid rgba(196,154,68,0.20);
       border-radius: 22px;
       box-shadow: var(--shadow-soft);
@@ -515,7 +499,9 @@
       overflow: hidden;
     }
 
-    .quick-card::before {
+    .quick-card::before,
+    .topic-card::before,
+    .protocol-card::before {
       content: "";
       position: absolute;
       left: 22px;
@@ -537,12 +523,17 @@
       background: rgba(196,154,68,0.08);
     }
 
-    .quick-card:hover {
+    .quick-card:hover,
+    .topic-card:hover,
+    .test-card:hover,
+    .contact-topic:hover {
       transform: translateY(-3px);
       box-shadow: 0 20px 44px rgba(33,63,29,0.13);
     }
 
-    .quick-icon {
+    .quick-icon,
+    .topic-icon,
+    .protocol-icon {
       width: 60px;
       height: 60px;
       margin-bottom: 18px;
@@ -556,20 +547,35 @@
       box-shadow: inset 0 0 0 6px rgba(255,253,247,0.82);
     }
 
-    .quick-card h3 {
+    .topic-icon,
+    .protocol-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--green-soft);
+      box-shadow: none;
+      font-size: 27px;
+    }
+
+    .quick-card h3,
+    .topic-card h3,
+    .protocol-card h3,
+    .fit-card h3 {
       margin: 0 0 12px;
       font-family: Georgia, "Times New Roman", serif;
       color: var(--green-deep);
-      font-size: 26px;
+      font-size: 25px;
       line-height: 1.08;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.025em;
     }
 
-    .quick-card p {
+    .quick-card p,
+    .topic-card p,
+    .protocol-card p,
+    .fit-card p {
       margin: 0;
       color: var(--text);
       font-size: 14px;
-      line-height: 1.38;
+      line-height: 1.45;
     }
 
     .quick-arrow {
@@ -585,9 +591,7 @@
     }
 
     .process {
-      background:
-        radial-gradient(circle at 12% 15%, rgba(196,154,68,0.10), transparent 24%),
-        #fffdf7;
+      background: radial-gradient(circle at 12% 15%, rgba(196,154,68,0.10), transparent 24%), #fffdf7;
     }
 
     .process-top {
@@ -599,20 +603,27 @@
       align-items: start;
     }
 
-    .process h2 {
-      margin: 0;
+    .process h2,
+    .topics-head h2,
+    .protocol-head h2,
+    .legal-head h2 {
+      margin: 0 0 16px;
       color: var(--green-deep);
-      font-size: clamp(38px, 4.3vw, 60px);
-      line-height: 1.05;
+      font-size: clamp(34px, 3.8vw, 54px);
+      line-height: 1.06;
       position: relative;
     }
 
-    .process h2::after {
+    .process h2::after,
+    .topics-head h2::after,
+    .protocol-head h2::after,
+    .section-title::after,
+    .legal-head h2::after {
       content: "";
       display: block;
-      width: 92px;
+      width: 86px;
       height: 2px;
-      margin-top: 22px;
+      margin-top: 18px;
       background: var(--gold);
       border-radius: 999px;
     }
@@ -661,9 +672,7 @@
       border: 2px solid var(--gold-soft);
       color: var(--green-deep);
       font-size: 36px;
-      box-shadow:
-        0 8px 18px rgba(33,63,29,0.08),
-        inset 0 0 0 8px rgba(255,253,247,0.86);
+      box-shadow: 0 8px 18px rgba(33,63,29,0.08), inset 0 0 0 8px rgba(255,253,247,0.86);
     }
 
     .step h3 {
@@ -685,7 +694,9 @@
       background: #fffdf7;
     }
 
-    .test-grid {
+    .test-grid,
+    .topics-grid,
+    .protocol-grid {
       max-width: 1120px;
       margin: 0 auto;
       display: grid;
@@ -700,11 +711,6 @@
       border-radius: 20px;
       box-shadow: var(--shadow-soft);
       transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .test-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 44px rgba(33,63,29,0.13);
     }
 
     .test-image {
@@ -772,135 +778,66 @@
       line-height: 1.38;
     }
 
-    .more-link {
+    .more-link,
+    .topic-link {
       color: var(--green);
       text-decoration: none;
       font-weight: 800;
       font-size: 13px;
     }
 
-    .topics {
-      background:
-        radial-gradient(circle at 88% 10%, rgba(196,154,68,0.12), transparent 24%),
-        var(--cream);
+    .topics,
+    .fit-section {
+      background: radial-gradient(circle at 88% 10%, rgba(196,154,68,0.12), transparent 24%), var(--cream);
       padding-top: 76px;
       padding-bottom: 76px;
     }
 
-    .topics-shell {
+    .topics-shell,
+    .protocol-shell,
+    .legal-shell {
       max-width: 1120px;
       margin: 0 auto;
     }
 
-    .topics-head {
-      max-width: 780px;
+    .topics-head,
+    .protocol-head,
+    .legal-head {
+      max-width: 850px;
       margin-bottom: 34px;
     }
 
-    .topics-head h2 {
-      margin: 0 0 16px;
-      color: var(--green-deep);
-      font-size: clamp(34px, 3.8vw, 54px);
-      line-height: 1.06;
-      position: relative;
-    }
-
-    .topics-head h2::after {
-      content: "";
-      display: block;
-      width: 86px;
-      height: 2px;
-      margin-top: 18px;
-      background: var(--gold);
-      border-radius: 999px;
-    }
-
-    .topics-head p {
-      margin: 0;
+    .topics-head p,
+    .protocol-head p,
+    .legal-head p {
+      margin: 0 0 14px;
       color: var(--text);
       font-size: 17px;
       line-height: 1.65;
     }
 
-    .topics-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-
-    .topic-card {
+    .topic-card,
+    .protocol-card {
       position: relative;
-      min-height: 260px;
-      padding: 26px 22px 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-decoration: none;
-      background:
-        linear-gradient(180deg, rgba(255,253,247,0.98), rgba(250,246,237,0.92));
+      min-height: 245px;
+      padding: 28px 22px 24px;
+      background: linear-gradient(180deg, rgba(255,253,247,0.98), rgba(250,246,237,0.94));
       border: 1px solid rgba(196,154,68,0.22);
       border-radius: 22px;
       box-shadow: var(--shadow-soft);
       overflow: hidden;
+      text-decoration: none;
       transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
-    .topic-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 44px rgba(33,63,29,0.13);
-    }
-
-    .topic-card::before {
-      content: "";
-      position: absolute;
-      left: 22px;
-      top: 0;
-      width: 58px;
-      height: 3px;
-      background: var(--gold);
-      border-radius: 0 0 999px 999px;
-    }
-
-    .topic-icon {
-      width: 56px;
-      height: 56px;
-      margin-bottom: 18px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: var(--green-soft);
-      border: 1px solid rgba(54,95,43,0.12);
-      color: var(--green-deep);
-      font-size: 27px;
-    }
-
     .topic-card h3 {
-      margin: 0 0 12px;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--green-deep);
-      font-size: 25px;
-      line-height: 1.08;
-      letter-spacing: -0.025em;
       overflow-wrap: anywhere;
       hyphens: auto;
     }
 
-    .topic-card p {
-      margin: 0;
-      color: var(--text);
-      font-size: 14px;
-      line-height: 1.45;
-    }
-
-    .topic-link {
-      margin-top: 18px;
-      color: var(--green);
-      font-weight: 800;
-      font-size: 13px;
-    }
-
-    .topics-note {
-      max-width: 980px;
+    .topics-note,
+    .contact-note {
+      max-width: 1120px;
       margin: 24px auto 0;
       color: var(--muted);
       font-size: 13px;
@@ -908,105 +845,13 @@
     }
 
     .protocol {
-      background:
-        radial-gradient(circle at 10% 20%, rgba(196,154,68,0.10), transparent 25%),
-        #fffdf7;
+      background: radial-gradient(circle at 10% 20%, rgba(196,154,68,0.10), transparent 25%), #fffdf7;
       padding-top: 76px;
       padding-bottom: 76px;
     }
 
-    .protocol-shell {
-      max-width: 1120px;
-      margin: 0 auto;
-    }
-
-    .protocol-head {
-      max-width: 850px;
-      margin-bottom: 34px;
-    }
-
-    .protocol-head h2 {
-      margin: 0 0 16px;
-      color: var(--green-deep);
-      font-size: clamp(34px, 3.8vw, 54px);
-      line-height: 1.06;
-      position: relative;
-    }
-
-    .protocol-head h2::after {
-      content: "";
-      display: block;
-      width: 86px;
-      height: 2px;
-      margin-top: 18px;
-      background: var(--gold);
-      border-radius: 999px;
-    }
-
-    .protocol-head p {
-      margin: 0 0 14px;
-      color: var(--text);
-      font-size: 17px;
-      line-height: 1.65;
-    }
-
     .protocol-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
       margin-top: 30px;
-    }
-
-    .protocol-card {
-      position: relative;
-      min-height: 245px;
-      padding: 28px 22px 24px;
-      background:
-        linear-gradient(180deg, rgba(255,253,247,0.98), rgba(250,246,237,0.94));
-      border: 1px solid rgba(196,154,68,0.22);
-      border-radius: 22px;
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
-    }
-
-    .protocol-card::before {
-      content: "";
-      position: absolute;
-      left: 22px;
-      top: 0;
-      width: 58px;
-      height: 3px;
-      background: var(--gold);
-      border-radius: 0 0 999px 999px;
-    }
-
-    .protocol-icon {
-      width: 56px;
-      height: 56px;
-      margin-bottom: 18px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: var(--green-soft);
-      border: 1px solid rgba(54,95,43,0.12);
-      color: var(--green-deep);
-      font-size: 26px;
-    }
-
-    .protocol-card h3 {
-      margin: 0 0 12px;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--green-deep);
-      font-size: 25px;
-      line-height: 1.08;
-      letter-spacing: -0.025em;
-    }
-
-    .protocol-card p {
-      margin: 0;
-      color: var(--text);
-      font-size: 14px;
-      line-height: 1.48;
     }
 
     .protocol-note {
@@ -1020,22 +865,10 @@
       line-height: 1.6;
     }
 
-    .protocol-actions {
-      margin-top: 24px;
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .fit-section {
-      background:
-        radial-gradient(circle at 90% 12%, rgba(196,154,68,0.12), transparent 25%),
-        var(--cream);
-      padding-top: 76px;
-      padding-bottom: 76px;
-    }
-
-    .fit-shell {
+    .fit-shell,
+    .simple-section {
+      position: relative;
+      overflow: hidden;
       max-width: 1120px;
       margin: 0 auto;
       display: grid;
@@ -1045,14 +878,12 @@
       padding: 36px;
       border-radius: 28px;
       border: 1px solid rgba(196,154,68,0.18);
-      background:
-        linear-gradient(145deg, rgba(255,253,247,0.96), rgba(250,246,237,0.90));
+      background: linear-gradient(145deg, rgba(255,253,247,0.96), rgba(250,246,237,0.90));
       box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
     }
 
-    .fit-shell::before {
+    .fit-shell::before,
+    .simple-section::before {
       content: "";
       position: absolute;
       right: -50px;
@@ -1063,12 +894,14 @@
       background: rgba(196,154,68,0.08);
     }
 
-    .fit-intro {
+    .fit-intro,
+    .simple-section > * {
       position: relative;
       z-index: 1;
     }
 
-    .fit-intro p {
+    .fit-intro p,
+    .section-copy {
       color: var(--text);
       font-size: 17px;
       margin: 0 0 14px;
@@ -1090,59 +923,8 @@
       box-shadow: 0 10px 22px rgba(33,63,29,0.06);
     }
 
-    .fit-card h3 {
-      margin: 0 0 9px;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--green-deep);
-      font-size: 23px;
-      line-height: 1.08;
-      letter-spacing: -0.025em;
-    }
-
-    .fit-card p {
-      margin: 0;
-      color: var(--text);
-      font-size: 14px;
-      line-height: 1.45;
-    }
-
-    .fit-actions {
-      margin-top: 22px;
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
     .content-section {
       background: var(--cream);
-    }
-
-    .simple-section {
-      position: relative;
-      overflow: hidden;
-      max-width: 1120px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 38px;
-      align-items: center;
-      padding: 36px;
-      border-radius: 28px;
-      border: 1px solid rgba(196,154,68,0.18);
-      background:
-        linear-gradient(145deg, rgba(255,253,247,0.96), rgba(250,246,237,0.90));
-      box-shadow: var(--shadow-soft);
-    }
-
-    .simple-section::before {
-      content: "";
-      position: absolute;
-      right: -50px;
-      top: -50px;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: rgba(196,154,68,0.08);
     }
 
     .section-title {
@@ -1151,24 +933,6 @@
       font-size: clamp(32px, 3vw, 46px);
       line-height: 1.08;
       position: relative;
-    }
-
-    .section-title::after {
-      content: "";
-      display: block;
-      width: 78px;
-      height: 2px;
-      margin-top: 16px;
-      background: var(--gold);
-      border-radius: 999px;
-    }
-
-    .section-copy {
-      color: var(--text);
-      font-size: 17px;
-      margin: 0 0 14px;
-      position: relative;
-      z-index: 1;
     }
 
     .about-image {
@@ -1193,9 +957,7 @@
       padding: 42px;
       border-radius: 28px;
       border: 1px solid rgba(196,154,68,0.22);
-      background:
-        radial-gradient(circle at top right, rgba(196,154,68,0.22), transparent 30%),
-        var(--green-deep);
+      background: radial-gradient(circle at top right, rgba(196,154,68,0.22), transparent 30%), var(--green-deep);
       color: #fff;
       box-shadow: var(--shadow-medium);
     }
@@ -1233,10 +995,6 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.35);
     }
 
-    .contact-details a:hover {
-      border-bottom-color: #fff;
-    }
-
     .contact-topic-grid {
       margin-top: 26px;
       display: grid;
@@ -1255,7 +1013,6 @@
     }
 
     .contact-topic:hover {
-      transform: translateY(-2px);
       background: rgba(255, 253, 247, 0.13);
     }
 
@@ -1298,9 +1055,49 @@
       text-align: center;
     }
 
-    .contact-note {
-      max-width: 1120px;
-      margin: 18px auto 0;
+    .legal {
+      background: #fffdf7;
+      padding-top: 76px;
+      padding-bottom: 76px;
+      border-top: 1px solid rgba(196,154,68,0.16);
+    }
+
+    .legal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .legal-card {
+      padding: 26px 24px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,253,247,0.98), rgba(250,246,237,0.92));
+      border: 1px solid rgba(196,154,68,0.20);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .legal-card h3 {
+      margin: 0 0 12px;
+      color: var(--green-deep);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+    }
+
+    .legal-card p {
+      margin: 0 0 10px;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .legal-card strong {
+      color: var(--green-deep);
+    }
+
+    .legal-small {
+      margin-top: 22px;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.55;
@@ -1314,18 +1111,39 @@
       font-size: 14px;
     }
 
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     footer strong {
       color: var(--green-deep);
     }
 
-    @keyframes gentlePresence {
-      0%, 100% {
-        transform: translateY(0);
-      }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
 
-      50% {
-        transform: translateY(-2px);
-      }
+    .footer-links a {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes gentlePresence {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1398,7 +1216,8 @@
       .topics-grid,
       .protocol-grid,
       .process-steps,
-      .fit-grid {
+      .fit-grid,
+      .legal-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -1453,11 +1272,6 @@
         row-gap: 12px;
       }
 
-      .hero-copy,
-      .hero-art {
-        padding-top: 0;
-      }
-
       .hero h1 {
         font-size: 42px;
       }
@@ -1481,7 +1295,8 @@
       .protocol-grid,
       .process-steps,
       .fit-grid,
-      .contact-topic-grid {
+      .contact-topic-grid,
+      .legal-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1512,6 +1327,11 @@
 
       .portrait-lightbox-card strong {
         font-size: 28px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
   </style>
@@ -2042,14 +1862,110 @@
       <p class="contact-note">
         Auf Rolands persönlicher Zinzino-Website findest du aktuelle Informationen zu Tests, Produkten und Paketoptionen.
         Achte dort auch auf den Bereich „Premier Kits“. Dort werden Paketoptionen und flexible Teilzahlungsmöglichkeiten
-        übersichtlich dargestellt. Die Inhalte dieser Website dienen der Information und ersetzen keine ärztliche Diagnose,
-        Beratung oder Behandlung. Impressum und Datenschutz werden ergänzt.
+        übersichtlich dargestellt.
       </p>
+    </section>
+
+    <section id="rechtliches" class="legal">
+      <div class="legal-shell">
+        <div class="legal-head">
+          <h2 class="serif">Rechtliche Hinweise</h2>
+          <p>
+            Dieser Bereich sammelt die wichtigsten rechtlichen und inhaltlichen Hinweise zur Website.
+            Die Angaben zu Impressum und Datenschutz werden noch mit den finalen Pflichtinformationen ergänzt.
+          </p>
+        </div>
+
+        <div class="legal-grid">
+          <article id="impressum" class="legal-card">
+            <h3>Impressum</h3>
+            <p><strong>Angaben gemäß den gesetzlichen Informationspflichten werden ergänzt.</strong></p>
+            <p>
+              Betreiber dieser Website: Roland Nesler.
+            </p>
+            <p>
+              E-Mail:
+              <a href="mailto:roland.nesler@gmail.com">roland.nesler@gmail.com</a>
+            </p>
+            <p>
+              Weitere Pflichtangaben wie Anschrift, Unternehmensdaten, zuständige Behörden
+              oder berufsrechtliche Angaben werden nach finaler Prüfung ergänzt.
+            </p>
+          </article>
+
+          <article id="datenschutz" class="legal-card">
+            <h3>Datenschutz</h3>
+            <p>
+              Wenn du per E-Mail Kontakt aufnimmst, werden die von dir übermittelten Daten
+              zur Bearbeitung deiner Anfrage verwendet.
+            </p>
+            <p>
+              Diese Website enthält externe Links, insbesondere zur persönlichen Zinzino-Website
+              von Roland Nesler. Für Inhalte und Datenverarbeitung externer Seiten gelten die
+              jeweiligen Hinweise der dortigen Anbieter.
+            </p>
+            <p>
+              Eine ausführliche Datenschutzerklärung wird ergänzt, sobald die endgültigen Dienste
+              der Website feststehen, zum Beispiel Terminbuchung, Analyse-Tools oder Kontaktformulare.
+            </p>
+          </article>
+
+          <article id="hinweise" class="legal-card">
+            <h3>Gesundheitlicher Hinweis</h3>
+            <p>
+              Die Inhalte dieser Website dienen der allgemeinen Information und Orientierung.
+              Sie ersetzen keine ärztliche Diagnose, Beratung oder Behandlung.
+            </p>
+            <p>
+              Bei bestehenden Erkrankungen, Beschwerden, Schwangerschaft, Stillzeit oder laufender
+              medizinischer Behandlung sollte die individuelle Situation immer mit ärztlichen oder
+              therapeutischen Fachpersonen besprochen werden.
+            </p>
+            <p>
+              Aussagen zu Tests, Produkten und Nährstoffen erfolgen informationsorientiert und im
+              Rahmen der offiziellen Produktinformationen.
+            </p>
+          </article>
+
+          <article id="partnerhinweis" class="legal-card">
+            <h3>Zinzino-Partnerhinweis</h3>
+            <p>
+              Roland Nesler ist unabhängiger Zinzino-Partner. Die verlinkte Zinzino-Seite ist seine
+              persönliche Zinzino-Website.
+            </p>
+            <p>
+              Informationen zu Tests, Produkten, Paketoptionen und Teilzahlungsmöglichkeiten werden
+              auf der offiziellen Zinzino-Seite dargestellt.
+            </p>
+            <p>
+              Die Partnerchance wird ohne Einkommensversprechen dargestellt. Ob und in welcher Höhe
+              Einnahmen entstehen, hängt von persönlicher Aktivität, Kundenaufbau, Teamaufbau,
+              Marktumfeld, Qualifikation und Umsetzung ab.
+            </p>
+          </article>
+        </div>
+
+        <p class="legal-small">
+          Hinweis: Dieser Bereich ist als strukturierter Entwurf vorbereitet und sollte vor endgültiger
+          Veröffentlichung rechtlich geprüft und mit den vollständigen Pflichtangaben ergänzt werden.
+        </p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <strong>Roland Nesler</strong> · Messbare Gesundheit · © 2026 · Impressum und Datenschutz werden ergänzt.
+    <div class="footer-inner">
+      <div>
+        <strong>Roland Nesler</strong> · Messbare Gesundheit · © 2026
+      </div>
+
+      <div class="footer-links">
+        <a href="#impressum">Impressum</a>
+        <a href="#datenschutz">Datenschutz</a>
+        <a href="#hinweise">Gesundheitlicher Hinweis</a>
+        <a href="#partnerhinweis">Partnerhinweis</a>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
