@@ -1027,6 +1027,92 @@
       flex-wrap: wrap;
     }
 
+    .fit-section {
+      background:
+        radial-gradient(circle at 90% 12%, rgba(196,154,68,0.12), transparent 25%),
+        var(--cream);
+      padding-top: 76px;
+      padding-bottom: 76px;
+    }
+
+    .fit-shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 38px;
+      align-items: start;
+      padding: 36px;
+      border-radius: 28px;
+      border: 1px solid rgba(196,154,68,0.18);
+      background:
+        linear-gradient(145deg, rgba(255,253,247,0.96), rgba(250,246,237,0.90));
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fit-shell::before {
+      content: "";
+      position: absolute;
+      right: -50px;
+      top: -50px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(196,154,68,0.08);
+    }
+
+    .fit-intro {
+      position: relative;
+      z-index: 1;
+    }
+
+    .fit-intro p {
+      color: var(--text);
+      font-size: 17px;
+      margin: 0 0 14px;
+    }
+
+    .fit-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .fit-card {
+      padding: 22px 20px;
+      border-radius: 20px;
+      background: rgba(255,253,247,0.88);
+      border: 1px solid rgba(196,154,68,0.18);
+      box-shadow: 0 10px 22px rgba(33,63,29,0.06);
+    }
+
+    .fit-card h3 {
+      margin: 0 0 9px;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--green-deep);
+      font-size: 23px;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+    }
+
+    .fit-card p {
+      margin: 0;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .fit-actions {
+      margin-top: 22px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
     .content-section {
       background: var(--cream);
     }
@@ -1261,7 +1347,8 @@
       .test-grid,
       .topics-grid,
       .protocol-grid,
-      .process-steps {
+      .process-steps,
+      .fit-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -1271,6 +1358,7 @@
 
       .process-top,
       .simple-section,
+      .fit-shell,
       .contact-box {
         grid-template-columns: 1fr;
       }
@@ -1341,7 +1429,8 @@
       .test-grid,
       .topics-grid,
       .protocol-grid,
-      .process-steps {
+      .process-steps,
+      .fit-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1356,6 +1445,7 @@
       }
 
       .simple-section,
+      .fit-shell,
       .contact-box,
       .protocol-note {
         padding: 28px;
@@ -1713,26 +1803,59 @@
       </div>
     </section>
 
-    <section id="was-passt" class="content-section">
-      <div class="simple-section">
-        <div>
+    <section id="was-passt" class="fit-section">
+      <div class="fit-shell">
+        <div class="fit-intro">
           <h2 class="section-title serif">Was passt zu mir?</h2>
-          <p class="section-copy">
+          <p>
             Jeder Mensch startet an einem anderen Punkt. Deshalb beginnt mein Ansatz
-            nicht mit einem Produkt, sondern mit Orientierung: Was möchtest du verbessern,
-            verstehen oder gezielt begleiten?
+            nicht mit einem Produkt, sondern mit Orientierung: Was möchtest du besser
+            verstehen, gezielt begleiten oder langfristig beobachten?
           </p>
-          <p class="section-copy">
-            Gemeinsam schauen wir, welche Tests und nächsten Schritte für dich sinnvoll sein können.
+          <p>
+            Vielleicht möchtest du wissen, wie gut deine Fettsäureversorgung ist. Vielleicht
+            geht es um Energie im Alltag, Regeneration im Sport, Schwangerschaft und Stillzeit,
+            Darmgesundheit, Blutzucker, Vitamin D oder einfach um mehr Klarheit statt Vermutung.
           </p>
+          <p>
+            Gemeinsam schauen wir, welche Tests und nächsten Schritte für deine Situation
+            sinnvoll sein können. Die Produktauswahl steht dabei nicht am Anfang, sondern wird
+            erst nach der individuellen Einordnung besprochen.
+          </p>
+
+          <div class="fit-actions">
+            <a class="button button-primary" href="#kontakt">Persönliche Orientierung anfragen</a>
+          </div>
         </div>
 
-        <div>
-          <p class="section-copy">
-            Besonders interessant ist dieser Ansatz für Menschen, die Gesundheit aktiv gestalten möchten:
-            Familien, Sportler, Frauen mit Kinderwunsch, Schwangere, Stillende,
-            gesundheitsbewusste Menschen und alle, die nicht länger raten möchten.
-          </p>
+        <div class="fit-grid">
+          <article class="fit-card">
+            <h3>Alltag &amp; Familie</h3>
+            <p>
+              Wenn du Gesundheit bewusster verstehen und im Alltag besser einordnen möchtest.
+            </p>
+          </article>
+
+          <article class="fit-card">
+            <h3>Schwangerschaft &amp; Stillzeit</h3>
+            <p>
+              Wenn du in dieser Lebensphase deine Versorgung mit wichtigen Fettsäuren bewusster betrachten möchtest.
+            </p>
+          </article>
+
+          <article class="fit-card">
+            <h3>Sport &amp; aktive Menschen</h3>
+            <p>
+              Wenn du Belastung, Regeneration und Versorgung besser verstehen möchtest.
+            </p>
+          </article>
+
+          <article class="fit-card">
+            <h3>Unternehmen &amp; Teams</h3>
+            <p>
+              Wenn Gesundheit im beruflichen Umfeld greifbarer und messbarer werden soll.
+            </p>
+          </article>
         </div>
       </div>
     </section>
