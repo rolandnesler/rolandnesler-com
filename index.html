@@ -22,7 +22,10 @@
       --shadow-soft: 0 12px 30px rgba(33, 63, 29, 0.08);
       --shadow-medium: 0 20px 54px rgba(33, 63, 29, 0.12);
       --image-fade: 22px;
+
       --anchor-offset: 145px;
+      --anchor-offset-start: 190px;
+      --anchor-offset-messen: 185px;
     }
 
     * {
@@ -37,7 +40,14 @@
       scroll-margin-top: var(--anchor-offset);
     }
 
-    #start,
+    #start {
+      scroll-margin-top: var(--anchor-offset-start);
+    }
+
+    #messen {
+      scroll-margin-top: var(--anchor-offset-messen);
+    }
+
     #roland-portrait-gross {
       scroll-margin-top: 0;
     }
@@ -1184,7 +1194,9 @@
 
     @media (max-width: 1100px) {
       :root {
-        --anchor-offset: 155px;
+        --anchor-offset: 175px;
+        --anchor-offset-start: 210px;
+        --anchor-offset-messen: 205px;
       }
 
       .header-top {
@@ -1253,7 +1265,9 @@
 
     @media (max-width: 720px) {
       :root {
-        --anchor-offset: 165px;
+        --anchor-offset: 205px;
+        --anchor-offset-start: 230px;
+        --anchor-offset-messen: 225px;
       }
 
       .header-top {
